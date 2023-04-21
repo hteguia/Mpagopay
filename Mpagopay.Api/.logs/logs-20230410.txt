@@ -1,0 +1,24 @@
+2023-04-10 17:14:48.470 +04:00 [INF] Now listening on: https://localhost:7275
+2023-04-10 17:14:48.549 +04:00 [INF] Now listening on: http://localhost:5145
+2023-04-10 17:14:48.553 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-10 17:14:48.555 +04:00 [INF] Hosting environment: Development
+2023-04-10 17:14:48.556 +04:00 [INF] Content root path: D:\PROJETS\Mpagopay\Mpagopay.Api\
+2023-04-10 17:19:46.743 +04:00 [INF] Now listening on: https://localhost:7275
+2023-04-10 17:19:46.855 +04:00 [INF] Now listening on: http://localhost:5145
+2023-04-10 17:19:46.864 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-10 17:19:46.866 +04:00 [INF] Hosting environment: Development
+2023-04-10 17:19:46.869 +04:00 [INF] Content root path: D:\PROJETS\Mpagopay\Mpagopay.Api\
+2023-04-10 17:28:09.543 +04:00 [INF] Now listening on: https://localhost:7275
+2023-04-10 17:28:09.610 +04:00 [INF] Now listening on: http://localhost:5145
+2023-04-10 17:28:09.616 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-10 17:28:09.618 +04:00 [INF] Hosting environment: Development
+2023-04-10 17:28:09.620 +04:00 [INF] Content root path: D:\PROJETS\Mpagopay\Mpagopay.Api\
+2023-04-10 17:31:43.090 +04:00 [INF] Now listening on: https://192.168.100.5:7275
+2023-04-10 17:31:43.158 +04:00 [INF] Now listening on: http://192.168.100.5:5145
+2023-04-10 17:31:43.164 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-10 17:31:43.166 +04:00 [INF] Hosting environment: Development
+2023-04-10 17:31:43.168 +04:00 [INF] Content root path: D:\PROJETS\Mpagopay\Mpagopay.Api\
+2023-04-10 17:42:42.647 +04:00 [INF] HTTP GET /api/cards/all responded 404 in 820.1512 ms
+2023-04-10 17:42:51.001 +04:00 [INF] HTTP GET /api/cards/all responded 404 in 0.6243 ms
+2023-04-10 17:43:36.892 +04:00 [INF] HTTP GET /api/card/all responded 200 in 5381.4087 ms
+2023-04-10 17:55:11.442 +04:00 [INF] HTTP GET /api/card/all responded 200 in 28481.8946 ms

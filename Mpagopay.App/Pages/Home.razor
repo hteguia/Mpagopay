@@ -1,0 +1,386 @@
+﻿@page "/home"
+
+<div class="container-fluid">
+
+    <div class="row g-2 row-deck">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <span>Orders Received</span>
+                    <h4 class="mb-0">47,012</h4>
+                    <small>23% Average <i class="fa fa-level-up"></i></small>
+                </div>
+                <div id="apexspark1"></div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <span>Total Sales</span>
+                    <h4 class="mb-0">512</h4>
+                    <small>18% Average <i class="fa fa-level-down"></i></small>
+                </div>
+                <div id="apexspark2"></div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <span>Total Unit Sold</span>
+                    <h4 class="mb-0">1,675</h4>
+                    <small>57% Average <i class="fa fa-level-up"></i></small>
+                </div>
+                <div id="apexspark3"></div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <span>Revenue</span>
+                    <h4 class="mb-0">1,612</h4>
+                    <small>13% Average <i class="fa fa-level-up"></i></small>
+                </div>
+                <div id="apexspark4"></div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                    <h6 class="m-0">Product Report</h6>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-link text-muted" type="button"><i class="fa fa-external-link"></i></button>
+                        <button class="btn btn-sm btn-link text-muted dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                        <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow border-0">
+                            <li><a class="dropdown-item" href="#">Action<i class="fa fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Another action<i class="fa fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Something else here<i class="fa fa-arrow-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="apex-Product-Report"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="member-thumb">
+                        <img src="../../../assets/images/lg/avatar1.jpg" class="img-fluid rounded" alt="profile-image">
+                    </div>
+                    <div class="detail mt-3">
+                        <h4 class="mb-0">Pro. John</h4>
+                        <p class="text-muted">Mathematics</p>
+                        <ul class="list-unstyled d-flex mt-2">
+                            <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="" data-bs-original-title="Facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="" data-bs-original-title="Twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="p-2" href="javascript:void(0);" data-bs-toggle="tooltip" title="" data-bs-original-title="Instagram" aria-label="Instagram"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                        <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                    <h6 class="m-0">Total Revenue</h6>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-link text-muted" type="button"><i class="fa fa-external-link"></i></button>
+                        <button class="btn btn-sm btn-link text-muted dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                        <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow border-0">
+                            <li><a class="dropdown-item" href="#">Action<i class="fa fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Another action<i class="fa fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Something else here<i class="fa fa-arrow-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body text-center p-4">
+                    <div class="text-center">
+                        <h5 class="mb-0">Total Sale</h5>
+                        <span class="text-muted text-uppercase">2,45,124</span>
+                    </div>
+                    <div id="apex-Total-Revenue"></div>
+                    <div class="text-center">
+                        <h6 class="mb-0">Satisfaction Rate</h6>
+                        <span class="text-muted text-uppercase small">47% Average <i class="fa fa-level-up"></i></span>
+                    </div>
+                </div>
+                <div id="apex-Satisfaction-Rate"></div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="card-header bg-transparent py-3 d-flex justify-content-between">
+                    <h6 class="card-title mb-0">New Customer Ratings</h6>
+                    <a href="#" title="">View All</a>
+                </div>
+                <ul class="list-group list-group-flush list-group-custom custom_scroll mb-0" style="height: 400px;">
+                    <li class="list-group-item py-3">
+                        <div class="d-flex">
+                            <img class="avatar rounded-circle" src="../../../assets/images/xs/avatar7.jpg" alt="">
+                            <div class="flex-fill ms-3">
+                                <span>There are many variations of passages</span>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star-half-empty text-warning"></i>
+                                <i class="fa fa-star-o text-warning"></i>
+                                <div><small class="text-muted">10:11 AM</small></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item py-3">
+                        <div class="d-flex">
+                            <img class="avatar rounded-circle" src="../../../assets/images/xs/avatar3.jpg" alt="">
+                            <div class="flex-fill ms-3">
+                                <span>Contrary to popular belief, Lorem Ipsum is not simply random text</span>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star-half-empty text-warning"></i>
+                                <div><small class="text-muted">10:11 AM</small></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item py-3">
+                        <div class="d-flex">
+                            <img class="avatar rounded-circle" src="../../../assets/images/xs/avatar1.jpg" alt="">
+                            <div class="flex-fill ms-3">
+                                <span>There are many variations of passages</span>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <div><small class="text-muted">10:11 AM</small></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item py-3">
+                        <div class="d-flex">
+                            <img class="avatar rounded-circle" src="../../../assets/images/xs/avatar2.jpg" alt="">
+                            <div class="flex-fill ms-3">
+                                <span>Contrary to popular belief, Lorem Ipsum is not simply random text</span>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star-half-empty text-warning"></i>
+                                <i class="fa fa-star-o text-warning"></i>
+                                <div><small class="text-muted">10:11 AM</small></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item py-3">
+                        <div class="d-flex">
+                            <img class="avatar rounded-circle" src="../../../assets/images/xs/avatar6.jpg" alt="">
+                            <div class="flex-fill ms-3">
+                                <span>There are many variations of passages</span>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star-half-empty text-warning"></i>
+                                <div><small class="text-muted">10:11 AM</small></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item py-3">
+                        <div class="d-flex">
+                            <img class="avatar rounded-circle" src="../../../assets/images/xs/avatar8.jpg" alt="">
+                            <div class="flex-fill ms-3">
+                                <span>There are many variations of passages</span>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <div><small class="text-muted">10:11 AM</small></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                    <h6 class="m-0">Top Selling Country</h6>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-link text-muted" type="button"><i class="fa fa-external-link"></i></button>
+                        <button class="btn btn-sm btn-link text-muted dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                        <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow border-0">
+                            <li><a class="dropdown-item" href="#">Action<i class="fa fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Another action<i class="fa fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Something else here<i class="fa fa-arrow-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-8 col-md-12">
+                            <div id="Top-Country" style="height: 360px;"></div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Contrary</th>
+                                            <th>2016</th>
+                                            <th>2017</th>
+                                            <th>Change</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>USA</td>
+                                            <td>2,009</td>
+                                            <td>3,591</td>
+                                            <td>
+                                                7.01% <i class="fa fa-level-up text-success"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>India</td>
+                                            <td>1,129</td>
+                                            <td>1,361</td>
+                                            <td>
+                                                3.01% <i class="fa fa-level-up text-success"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Canada</td>
+                                            <td>2,009</td>
+                                            <td>2,901</td>
+                                            <td>
+                                                9.01% <i class="fa fa-level-up text-success"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Australia</td>
+                                            <td>954</td>
+                                            <td>901</td>
+                                            <td>
+                                                5.71% <i class="fa fa-level-down text-warning"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Germany</td>
+                                            <td>594</td>
+                                            <td>500</td>
+                                            <td>
+                                                6.11% <i class="fa fa-level-down text-warning"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>UK</td>
+                                            <td>1,500</td>
+                                            <td>1,971</td>
+                                            <td>
+                                                8.50% <i class="fa fa-level-up text-success"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Other</td>
+                                            <td>4,236</td>
+                                            <td>4,591</td>
+                                            <td>
+                                                9.15% <i class="fa fa-level-up text-success"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                    <h6 class="m-0">Recent Orders</h6>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-link text-muted" type="button"><i class="fa fa-external-link"></i></button>
+                        <button class="btn btn-sm btn-link text-muted dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                        <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow border-0">
+                            <li><a class="dropdown-item" href="#">Action<i class="fa fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Another action<i class="fa fa-arrow-right"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Something else here<i class="fa fa-arrow-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Item</th>
+                                    <th>Address</th>
+                                    <th>Quantity</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="../../../assets/images/ecommerce/1.png" class="w30"
+                                             alt="Product img">
+                                    </td>
+                                    <td>Hossein</td>
+                                    <td>IPONE-7</td>
+                                    <td>Porterfield 508 Virginia Street Chicago, IL 60653</td>
+                                    <td>3</td>
+                                    <td><span class="badge bg-success">DONE</span></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../../../assets/images/ecommerce/2.png" class="w30" alt="Product img"></td>
+                                    <td>Camara</td>
+                                    <td>NOKIA-8</td>
+                                    <td>2595 Pearlman Avenue Sudbury, MA 01776 </td>
+                                    <td>3</td>
+                                    <td><span class="badge bg-info">Delivered</span></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../../../assets/images/ecommerce/3.png" class="w30" alt="Product img"></td>
+                                    <td>Maryam</td>
+                                    <td>NOKIA-456</td>
+                                    <td>Porterfield 508 Virginia Street Chicago, IL 60653</td>
+                                    <td>4</td>
+                                    <td><span class="badge bg-success">DONE</span></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../../../assets/images/ecommerce/4.png" class="w30" alt="Product img"></td>
+                                    <td>Micheal</td>
+                                    <td>SAMSANG PRO</td>
+                                    <td>508 Virginia Street Chicago, IL 60653</td>
+                                    <td>1</td>
+                                    <td><span class="badge bg-success">DONE</span></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../../../assets/images/ecommerce/5.png" class="w30" alt="Product img"></td>
+                                    <td>Frank</td>
+                                    <td>NOKIA-456</td>
+                                    <td>1516 Holt Street West Palm Beach, FL 33401</td>
+                                    <td>13</td>
+                                    <td><span class="badge bg-warning">PENDING</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- .row end -->
+
+</div>
+
+
+
+@code {
+
+}

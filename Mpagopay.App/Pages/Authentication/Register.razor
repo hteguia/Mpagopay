@@ -1,0 +1,112 @@
+﻿@page "/register"
+@layout MainLayout
+@attribute [AllowAnonymous]
+
+@inject IStringLocalizer<Resource> localizer
+
+<!-- Form -->
+<EditForm Model="@ViewModel" OnValidSubmit="@HandleValidSubmit" class="row g-1 p-0 p-md-4">
+    <div class="col-12 text-center mb-5">
+        <h2>@localizer["create_your_account"]</h2>
+        <span>Free access to our dashboard.</span>
+    </div>
+    <div class="col-6">
+        <div class="mb-2">
+            <label class="form-label">@localizer["full_name"]</label>
+            <InputText type="text" @bind-Value="@ViewModel.FirstName" class="form-control form-control-lg" placeholder="@localizer["first_name"]"></InputText>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="mb-2">
+            <label class="form-label">&nbsp;</label>
+            <InputText type="text" @bind-Value="@ViewModel.LastName" class="form-control form-control-lg" placeholder="@localizer["last_name"]" />
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="mb-2">
+            <label class="form-label">@localizer["user_name"]</label>
+            <InputText type="text" @bind-Value="@ViewModel.UserName" class="form-control form-control-lg" placeholder="@localizer["user_name"]" />
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="mb-2">
+            <label class="form-label">@localizer["email"]</label>
+            <InputText type="email" @bind-Value="@ViewModel.Email" class="form-control form-control-lg" placeholder="@localizer["email_address"]" />
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="mb-2">
+            <label class="form-label">@localizer["password"]</label>
+            <input type="password" class="form-control form-control-lg" placeholder="8+ characters required">
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="mb-2">
+            <label class="form-label">@localizer["repeat_password"]</label>
+            <InputText type="password" @bind-Value="@ViewModel.Password" class="form-control form-control-lg" placeholder="8+ characters required" />
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                I accept the <a href="#" title="" class="text-primary">Terms and Conditions</a>
+            </label>
+        </div>
+    </div>
+    <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btn-lg btn-block btn-dark lift text-uppercase">SIGN UP</button>
+    </div>
+    <div class="col-12 text-center mt-4">
+        <span class="text-muted">Already have an account? <a href="javascript: void(0)" @onclick="@NavigateToLogin" @onclick:preventDefault>Sign in here</a></span>
+    </div>
+</EditForm>
+                            <!-- End Form -->
+
+<!--
+<h3>Register</h3>
+<div class="mt-5 row">
+	<div class="card col-12 col-lg-6 me-auto ms-auto p-3">
+		<h3 class="card-title">Register</h3>
+		<div class="card-body">
+			<EditForm Model="@ViewModel" OnValidSubmit="@HandleValidSubmit">
+				<div class="row mt-2">
+					<label class="col-12 col-md-4 form-label" for="FirstName">FirstName:</label>
+					<div class="col-12 col-md-8">
+						<InputText id="firstName" class="form-control login-field" @bind-Value="@ViewModel.FirstName"></InputText>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<label class="col-12 col-md-4 form-label" for="FirstName">LastName:</label>
+					<div class="col-12 col-md-8">
+						<InputText id="lastName" class="form-control login-field" @bind-Value="@ViewModel.LastName"></InputText>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<label class="col-12 col-md-4 form-label" for="FirstName">Email:</label>
+					<div class="col-12 col-md-8">
+						<InputText id="email" class="form-control login-field" @bind-Value="@ViewModel.Email"></InputText>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<label class="col-12 col-md-4 form-label" for="FirstName">UserName:</label>
+					<div class="col-12 col-md-8">
+						<InputText id="userName" class="form-control login-field" @bind-Value="@ViewModel.UserName"></InputText>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<label class="col-12 col-md-4 form-label" for="FirstName">Password:</label>
+					<div class="col-12 col-md-8">
+						<InputText id="password" class="form-control login-field" @bind-Value="@ViewModel.Password"></InputText>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<div class="offset-md-4">
+						<button class="m-2 ms-0 p-2">Register</button>
+					</div>
+				</div>
+			</EditForm>
+		</div>
+	</div>
+</div>
+-->

@@ -1,0 +1,40 @@
+﻿@page "/cardoverview"
+@inject ICardDataService CardDataService
+
+<PageTitle>Cards List</PageTitle>
+
+<h1>Cards List</h1>
+
+@if (Cards == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var card in Cards)
+            {
+                <tr>
+                    <td>@card.CardId</td>
+                    <td>@card.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    public ICollection<CardListViewModel> Cards;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Cards = await CardDataService.GetAllCards();
+    }
+}

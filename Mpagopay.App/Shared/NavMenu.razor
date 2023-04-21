@@ -1,0 +1,89 @@
+﻿<!--<ul class="nav nav-tabs tab-body-header rounded d-flex text-center rounded-pill" role="tablist">
+    <li class="nav-item flex-fill"><a class="rounded-pill nav-link active" data-bs-toggle="tab" href="#nav-Menu" role="tab">Menu</a></li>
+    <li class="nav-item flex-fill"><a class="rounded-pill nav-link" data-bs-toggle="tab" href="#nav-Profile" role="tab">Profile</a></li>
+</ul>-->
+<div class="tab-content mt-2">
+    <div class="tab-pane fade show active" id="nav-Menu" role="tabpanel">
+        <!-- User info -->
+        <div class="py-4 text-center">
+            <a href="#"><img src="../../../assets/images/profile_av.png" alt="User" class="rounded-circle img-thumbnail w90 shadow-sm"></a>
+            <h5 class="mb-0 mt-2">Chris Morise</h5>
+            <small class="text-muted">UI UX Designer</small>
+            <!--<div class="py-2">
+                <a class="p-1 me-2 text-muted" href="javascript:void(0);" title="facebook"><i class="fa fa-facebook"></i></a>
+                <a class="p-1 me-2 text-muted" href="javascript:void(0);" title="twitter"><i class="fa fa-twitter"></i></a>
+                <a class="p-1 me-2 text-muted" href="javascript:void(0);" title="instagram"><i class="fa fa-instagram"></i></a>
+            </div>-->
+        </div>
+        <!-- menu -->
+        <ul class="menu-list flex-grow-1">
+            <li>
+                <NavLink class="ms-link" href="/home"><i class="fa fa-dashboard"></i><span>Dashboard</span></NavLink>
+            </li>
+            <li>
+                <NavLink class="ms-link" href="/product-list"><i class="fa fa-user-md"></i> <span>Product</span> <span class="arrow fa fa-plus ms-auto text-end"></span></NavLink>
+            </li>
+            <li class="divider mt-4 py-2 border-top"><small>DOCUMENTATION</small></li>
+            <li><a class="m-link" href="../../../documentation/index.html"><i class="fa fa-file-text"></i> <span>Documentation</span></a></li>
+            <li><a class="m-link" href="../../../documentation/changelog.html"><i class="fa fa-pencil"></i> <span>Changelog</span><span id="ALUIversion"></span></a></li>
+        </ul>
+    </div>
+    <div class="tab-pane fade" id="nav-Profile" role="tabpanel">
+        <!-- User info -->
+        <div class="py-4 text-center">
+            <a href="#"><img src="../../../assets/images/profile_av.png" alt="User" class="rounded-circle img-thumbnail w90 shadow-sm"></a>
+            <h5 class="mb-0 mt-2">Chris Morise</h5>
+            <small class="text-muted">UI UX Designer</small>
+            <div class="py-2">
+                <a class="p-1 me-2 text-muted" href="javascript:void(0);" title="facebook"><i class="fa fa-facebook"></i></a>
+                <a class="p-1 me-2 text-muted" href="javascript:void(0);" title="twitter"><i class="fa fa-twitter"></i></a>
+                <a class="p-1 me-2 text-muted" href="javascript:void(0);" title="instagram"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="d-flex pt-4 mb-3 border-top">
+            <div class="flex-fill">
+                <small>INCOME</small>
+                <h6 class="fw-bold mb-0">8.18K</h6>
+            </div>
+            <div class="flex-fill">
+                <small>EXPENSE</small>
+                <h6 class="fw-bold mb-0">1.11K</h6>
+            </div>
+            <div class="flex-fill">
+                <small>REVENUE</small>
+                <h6 class="fw-bold mb-0">3.66K</h6>
+            </div>
+        </div>
+        <div class="mb-3">
+            <small class="text-muted">Email:</small>
+            <div class="mb-0">chris-morise@info.com</div>
+        </div>
+        <div class="mb-3">
+            <small class="text-muted">Phone:</small>
+            <div class="mb-0">+ 202-555-0191</div>
+        </div>
+        <div class="mb-3">
+            <small class="text-muted">Address:</small>
+            <div class="mb-0">795 Folsom Ave, San Francisco, CADGE 94107</div>
+        </div>
+
+        <div class="alert alert-primary mt-4 flex-grow-1">
+            <div class="fs-6 fw-bold">Hire Us</div>
+            <p class="small">Engage our Proficient Developers and Designer as per your Project Requirement</p>
+            <a class="btn btn-primary" href="https://www.thememakker.com/hire-us/" target="_blank" title="Hire us">Write message</a>
+        </div>
+
+    </div>
+</div>
+
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

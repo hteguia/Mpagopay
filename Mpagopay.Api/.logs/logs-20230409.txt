@@ -1,0 +1,197 @@
+2023-04-09 16:21:41.363 +04:00 [INF] Now listening on: https://localhost:7275
+2023-04-09 16:21:41.402 +04:00 [INF] Now listening on: http://localhost:5145
+2023-04-09 16:21:41.407 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-09 16:21:41.409 +04:00 [INF] Hosting environment: Development
+2023-04-09 16:21:41.411 +04:00 [INF] Content root path: D:\PROJETS\Mpagopay\Mpagopay.Api\
+2023-04-09 17:51:50.172 +04:00 [ERR] HTTP POST /api/Account/authenticate responded 500 in 2942.1159 ms
+System.Exception: User with herve@gmail.com not found
+   at Mpagopay.Identity.Services.AuthenticationService.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Identity\Services\AuthenticationService.cs:line 38
+   at Mpagopay.Api.Controllers.AccountController.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Api\Controllers\AccountController.cs:line 23
+   at lambda_method29(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-04-09 17:52:00.768 +04:00 [ERR] HTTP POST /api/Account/authenticate responded 500 in 16.4506 ms
+System.Exception: User with herve@gmail.com not found
+   at Mpagopay.Identity.Services.AuthenticationService.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Identity\Services\AuthenticationService.cs:line 38
+   at Mpagopay.Api.Controllers.AccountController.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Api\Controllers\AccountController.cs:line 23
+   at lambda_method29(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-04-09 17:53:25.466 +04:00 [INF] HTTP POST /api/Account/register responded 400 in 29.9909 ms
+2023-04-09 17:54:47.627 +04:00 [INF] HTTP POST /api/Account/register responded 400 in 0.9722 ms
+2023-04-09 17:56:03.400 +04:00 [INF] HTTP POST /api/Account/register responded 400 in 30.8835 ms
+2023-04-09 17:56:42.513 +04:00 [INF] HTTP POST /api/Account/register responded 400 in 0.7531 ms
+2023-04-09 17:57:30.497 +04:00 [INF] HTTP POST /api/Account/register responded 400 in 0.7940 ms
+2023-04-09 17:59:24.730 +04:00 [INF] HTTP POST /api/Account/register responded 200 in 699.8887 ms
+2023-04-09 17:59:51.733 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 1213.4003 ms
+2023-04-09 18:01:41.519 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 18.5932 ms
+2023-04-09 18:18:05.864 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 90.0563 ms
+2023-04-09 18:25:25.647 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 69.0792 ms
+2023-04-09 18:26:07.602 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 21.1816 ms
+2023-04-09 20:48:47.967 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 96.7924 ms
+2023-04-09 20:54:20.533 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 101.9135 ms
+2023-04-09 20:56:23.753 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 17.6500 ms
+2023-04-09 20:57:56.019 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 45.8517 ms
+2023-04-09 20:59:24.779 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 18.8038 ms
+2023-04-09 21:04:48.575 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 65.3495 ms
+2023-04-09 21:11:41.569 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 92.5857 ms
+2023-04-09 21:12:14.482 +04:00 [INF] HTTP POST /api/Account/register responded 200 in 106.0788 ms
+2023-04-09 21:14:44.727 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 17.8859 ms
+2023-04-09 22:24:44.839 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 166.1208 ms
+2023-04-09 22:50:35.547 +04:00 [ERR] HTTP GET /api/card/all responded 500 in 38.5991 ms
+System.InvalidOperationException: Endpoint Mpagopay.Api.Controllers.CardController.GetAllCards (Mpagopay.Api) contains authorization metadata, but a middleware was not found that supports authorization.
+Configure your application startup by adding app.UseAuthorization() in the application startup code. If there are calls to app.UseRouting() and app.UseEndpoints(...), the call to app.UseAuthorization() must go between them.
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.ThrowMissingAuthMiddlewareException(Endpoint endpoint)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-04-09 22:55:31.331 +04:00 [ERR] HTTP GET /api/Card/all responded 500 in 0.1285 ms
+System.InvalidOperationException: Endpoint Mpagopay.Api.Controllers.CardController.GetAllCards (Mpagopay.Api) contains authorization metadata, but a middleware was not found that supports authorization.
+Configure your application startup by adding app.UseAuthorization() in the application startup code. If there are calls to app.UseRouting() and app.UseEndpoints(...), the call to app.UseAuthorization() must go between them.
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.ThrowMissingAuthMiddlewareException(Endpoint endpoint)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-04-09 22:59:36.081 +04:00 [ERR] HTTP GET /api/Card/all responded 500 in 0.0583 ms
+System.InvalidOperationException: Endpoint Mpagopay.Api.Controllers.CardController.GetAllCards (Mpagopay.Api) contains authorization metadata, but a middleware was not found that supports authorization.
+Configure your application startup by adding app.UseAuthorization() in the application startup code. If there are calls to app.UseRouting() and app.UseEndpoints(...), the call to app.UseAuthorization() must go between them.
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.ThrowMissingAuthMiddlewareException(Endpoint endpoint)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-04-09 23:00:10.325 +04:00 [ERR] HTTP GET /api/Card/all responded 500 in 0.0760 ms
+System.InvalidOperationException: Endpoint Mpagopay.Api.Controllers.CardController.GetAllCards (Mpagopay.Api) contains authorization metadata, but a middleware was not found that supports authorization.
+Configure your application startup by adding app.UseAuthorization() in the application startup code. If there are calls to app.UseRouting() and app.UseEndpoints(...), the call to app.UseAuthorization() must go between them.
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.ThrowMissingAuthMiddlewareException(Endpoint endpoint)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-04-09 23:01:49.566 +04:00 [INF] Application is shutting down...
+2023-04-09 23:02:32.422 +04:00 [INF] Now listening on: https://localhost:7275
+2023-04-09 23:02:32.459 +04:00 [INF] Now listening on: http://localhost:5145
+2023-04-09 23:02:32.464 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-09 23:02:32.465 +04:00 [INF] Hosting environment: Development
+2023-04-09 23:02:32.467 +04:00 [INF] Content root path: D:\PROJETS\Mpagopay\Mpagopay.Api\
+2023-04-09 23:03:05.368 +04:00 [INF] HTTP GET /api/Card/all responded 401 in 935.8462 ms
+2023-04-09 23:04:20.057 +04:00 [INF] HTTP GET /api/Card/all responded 401 in 1.5665 ms
+2023-04-09 23:05:19.978 +04:00 [INF] HTTP GET /api/Card/all responded 401 in 2.7456 ms
+2023-04-09 23:05:36.772 +04:00 [ERR] HTTP POST /api/Account/authenticate responded 500 in 1738.0063 ms
+System.Exception: User with herve@gmail.com not found
+   at Mpagopay.Identity.Services.AuthenticationService.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Identity\Services\AuthenticationService.cs:line 38
+   at Mpagopay.Api.Controllers.AccountController.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Api\Controllers\AccountController.cs:line 23
+   at lambda_method29(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-04-09 23:05:51.424 +04:00 [ERR] HTTP POST /api/Account/authenticate responded 500 in 6.6082 ms
+System.Exception: User with herve@gmail.com not found
+   at Mpagopay.Identity.Services.AuthenticationService.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Identity\Services\AuthenticationService.cs:line 38
+   at Mpagopay.Api.Controllers.AccountController.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Api\Controllers\AccountController.cs:line 23
+   at lambda_method29(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-04-09 23:06:47.868 +04:00 [INF] HTTP POST /api/Account/register responded 200 in 549.4102 ms
+2023-04-09 23:07:05.354 +04:00 [ERR] HTTP POST /api/Account/authenticate responded 500 in 43.5723 ms
+System.Exception: User with herve@gamil.com not found
+   at Mpagopay.Identity.Services.AuthenticationService.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Identity\Services\AuthenticationService.cs:line 38
+   at Mpagopay.Api.Controllers.AccountController.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Api\Controllers\AccountController.cs:line 23
+   at lambda_method29(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-04-09 23:07:31.103 +04:00 [ERR] HTTP POST /api/Account/authenticate responded 500 in 3.1210 ms
+System.Exception: User with herve@gamil.com not found
+   at Mpagopay.Identity.Services.AuthenticationService.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Identity\Services\AuthenticationService.cs:line 38
+   at Mpagopay.Api.Controllers.AccountController.AuthenticateAsync(AuthenticationRequest request) in D:\PROJETS\Mpagopay\Mpagopay.Api\Controllers\AccountController.cs:line 23
+   at lambda_method29(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2023-04-09 23:08:14.448 +04:00 [INF] HTTP POST /api/Account/register responded 200 in 354.3528 ms
+2023-04-09 23:08:29.545 +04:00 [INF] HTTP POST /api/Account/authenticate responded 200 in 332.3443 ms
+2023-04-09 23:08:38.883 +04:00 [INF] HTTP GET /api/Card/all responded 401 in 1.5077 ms
+2023-04-09 23:08:58.428 +04:00 [INF] HTTP GET /api/Card/all responded 401 in 0.4951 ms
+2023-04-09 23:11:21.597 +04:00 [INF] Application is shutting down...
+2023-04-09 23:11:35.354 +04:00 [INF] Now listening on: https://localhost:7275
+2023-04-09 23:11:35.391 +04:00 [INF] Now listening on: http://localhost:5145
+2023-04-09 23:11:35.397 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-09 23:11:35.402 +04:00 [INF] Hosting environment: Development
+2023-04-09 23:11:35.404 +04:00 [INF] Content root path: D:\PROJETS\Mpagopay\Mpagopay.Api\
+2023-04-09 23:12:40.006 +04:00 [INF] HTTP GET /api/Card/all responded 401 in 308.7100 ms
+2023-04-09 23:18:38.917 +04:00 [INF] HTTP GET /api/Card/all responded 401 in 2.3900 ms
+2023-04-09 23:19:36.775 +04:00 [INF] HTTP GET /api/Card/all responded 401 in 2.8313 ms
+2023-04-09 23:20:05.736 +04:00 [INF] HTTP GET /api/Card/all responded 401 in 0.6264 ms
+2023-04-09 23:23:41.920 +04:00 [INF] Application is shutting down...
+2023-04-09 23:23:58.158 +04:00 [INF] Now listening on: https://localhost:7275
+2023-04-09 23:23:58.195 +04:00 [INF] Now listening on: http://localhost:5145
+2023-04-09 23:23:58.201 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-09 23:23:58.202 +04:00 [INF] Hosting environment: Development
+2023-04-09 23:23:58.205 +04:00 [INF] Content root path: D:\PROJETS\Mpagopay\Mpagopay.Api\
+2023-04-09 23:24:32.389 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 1119.2176 ms
+2023-04-09 23:25:13.499 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 3.9804 ms
+2023-04-09 23:26:59.003 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 16.0803 ms
+2023-04-09 23:29:30.463 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 3.6839 ms
+2023-04-09 23:37:45.072 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 29.8996 ms
+2023-04-09 23:38:06.375 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 1.7868 ms
+2023-04-09 23:38:09.879 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 1.7358 ms
+2023-04-09 23:38:11.594 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 2.1368 ms
+2023-04-09 23:39:36.686 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 2.7277 ms
+2023-04-09 23:39:38.195 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 2.7489 ms
+2023-04-09 23:39:39.192 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 1.7473 ms
+2023-04-09 23:39:40.113 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 6.3086 ms
+2023-04-09 23:39:40.950 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 1.5780 ms
+2023-04-09 23:39:41.897 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 2.4747 ms
+2023-04-09 23:39:42.803 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 4.1576 ms
+2023-04-09 23:39:59.004 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 2.7021 ms
+2023-04-09 23:40:01.655 +04:00 [INF] HTTP GET /api/Card/all responded 200 in 9.6450 ms

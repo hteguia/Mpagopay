@@ -1,0 +1,57 @@
+﻿@page "/login"
+@layout MainLayout
+@attribute [AllowAnonymous]
+
+@inject IStringLocalizer<Resource> localizer
+
+<EditForm Model="@ViewModel" OnValidSubmit="@HandleValidSubmit" class="row g-1 p-0 p-md-4">
+    <div class="col-12 text-center mb-5">
+        <h1>@localizer["sign_in"]</h1>
+        <span>Free access to our dashboard.</span>
+    </div>
+    <div class="col-12">
+        <div class="mb-2">
+            <label class="form-label">Email address</label>
+            <InputText type="email" @bind-Value="@ViewModel.Email" class="form-control form-control-lg" placeholder="name@example.com"></InputText>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="mb-2">
+            <div class="form-label">
+                <span class="d-flex justify-content-between align-items-center">
+                    Password
+                    <a class="text-primary" href="auth-password-reset.html">Forgot Password?</a>
+                </span>
+            </div>
+            <InputText type="password" @bind-Value="@ViewModel.Password" class="form-control form-control-lg" placeholder="***************"></InputText>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Remember me
+            </label>
+        </div>
+    </div>
+    <div class="col-12 text-center mt-4">
+        <button type="submit" class="btn btn-lg btn-block btn-dark lift text-uppercase">SIGN IN</button>
+    </div>
+    <div class="col-12 text-center mt-4">
+        <span class="text-muted">Don't have an account yet? <a href="javascript: void(0)" @onclick="@NavigateToRegister" @onclick:preventDefault>Sign up here</a></span>
+    </div>
+</EditForm>
+
+<!--
+<h3>Login</h3>
+
+<EditForm Model="@ViewModel" OnValidSubmit="@HandleValidSubmit">
+	<InputText id="userName" @bind-Value="@ViewModel.Email"></InputText>
+	<InputText type="password" id="password" @bind-Value="@ViewModel.Password"></InputText>
+	<button type="submit">Login</button>
+</EditForm>
+<span>@Message</span>
+-->
+
+
+

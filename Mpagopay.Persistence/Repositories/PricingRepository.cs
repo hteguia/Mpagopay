@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Mpagopay.Application.Contrats.Persistence;
+using Mpagopay.Domain.Entities;
+
+namespace Mpagopay.Persistence.Repositories
+{
+    public class PricingRepository : BaseRepository<Pricing>, IPricingRepository
+    {
+        public PricingRepository(MpagopayDbContext dbContext) : base(dbContext)
+        {
+        }
+    }
+}
