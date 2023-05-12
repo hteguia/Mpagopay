@@ -13,5 +13,10 @@ namespace Mpagopay.Persistence.Repositories
         public PricingRepository(MpagopayDbContext dbContext) : base(dbContext)
         {
         }
+
+        public Task<bool> IsPricingNameUnique(string pricingName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

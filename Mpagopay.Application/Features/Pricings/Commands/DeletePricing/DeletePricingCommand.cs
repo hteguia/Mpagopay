@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mpagopay.Domain.Common;
+using MediatR;
 
-namespace Mpagopay.Domain.Entities
+namespace Mpagopay.Application.Features.Pricings.Commands.DeletePricing
 {
-    public class Pricing : BaseEntity
+    public class DeletePricingCommand : IRequest
     {
         public long PricingId { get; set; }
-        public string Name { get; set; } = string.Empty;
     }
 }

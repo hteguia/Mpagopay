@@ -41,6 +41,8 @@ namespace Mpagopay.Api
 
         public static WebApplication ConfigurationPipeline(this WebApplication app)
         {
+            
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

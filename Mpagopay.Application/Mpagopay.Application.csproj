@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,9 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\PricingDetails\Commands\" />
-    <Folder Include="Features\PricingDetails\Queries\" />
-    <Folder Include="Features\Pricings\Commands\" />
+    <Folder Include="Features\CardRecharges\Commands\" />
   </ItemGroup>
 
 </Project>

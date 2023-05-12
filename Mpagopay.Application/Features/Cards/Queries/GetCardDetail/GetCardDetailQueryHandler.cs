@@ -28,5 +28,7 @@ namespace Mpagopay.Application.Features.Cards.Queries.GetCardDetail
 
             return cardDetail;
         }
+
+
     }
 }

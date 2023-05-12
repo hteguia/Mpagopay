@@ -9,6 +9,9 @@ using Mpagopay.Application.Models.Mail;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Mpagopay.Application.Models.Sms;
+using Mpagopay.Infrastructure.Sms;
 
 namespace Mpagopay.Infrastructure.Mail
 {
@@ -47,6 +50,7 @@ namespace Mpagopay.Infrastructure.Mail
             _logger.LogInformation("Email sending failed");
 
             return false;
+            
         }
     }
 }

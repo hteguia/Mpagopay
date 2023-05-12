@@ -9,5 +9,6 @@ namespace Mpagopay.Application.Contrats.Persistence
 {
     public interface IPricingRepository : IAsyncRepository<Pricing>
     {
+        Task<bool> IsPricingNameUnique(string pricingName);
     }
 }

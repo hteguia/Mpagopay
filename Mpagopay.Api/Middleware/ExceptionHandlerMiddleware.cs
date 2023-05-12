@@ -33,7 +33,7 @@ namespace Mpagopay.Api.Middleware
 
             var result = string.Empty;
 
-            switch (ex)
+            switch (ex.InnerException)
             {
                 case ValidationException validationException:
                     httpStatusCode = HttpStatusCode.BadRequest;

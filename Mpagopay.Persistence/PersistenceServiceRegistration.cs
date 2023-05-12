@@ -21,6 +21,9 @@ namespace Mpagopay.Persistence
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 
             services.AddScoped<ICardRepository, CardRpository>();
+            services.AddScoped<IPricingRepository, PricingRepository>();
+            services.AddScoped<IPricingDetailRepository, PricingDetailRepository>();
+            services.AddScoped<ICardRechargeRepository, CardRechargeRepository>();
 
             return services;
         }

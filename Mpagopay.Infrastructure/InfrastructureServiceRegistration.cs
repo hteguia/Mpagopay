@@ -8,10 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Mpagopay.Application.Contrats.Infrastructure;
 using Mpagopay.Application.Contrats.Persistence;
 using Mpagopay.Application.Models.Mail;
+using Mpagopay.Application.Models.Mail.Brevo;
 using Mpagopay.Application.Models.Sms;
 using Mpagopay.Infrastructure.FileExport;
 using Mpagopay.Infrastructure.Mail;
 using Mpagopay.Infrastructure.Sms;
+using Mpagopay.Infrastructure.VirtualCard;
 
 namespace Mpagopay.Infrastructure
 {
@@ -21,10 +23,12 @@ namespace Mpagopay.Infrastructure
         {
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
             services.Configure<SmsSettings>(configuration.GetSection("SmsSettings"));
+            services.Configure<BrevoEmailSettings>(configuration.GetSection("BrevoEmailSettings"));
 
             services.AddTransient<ICsvExporter, CsvExporter>();
-            services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IEmailService, BrevoEmailService>();
             services.AddTransient<ISmsService, SmsService>();
+            services.AddTransient<IVirtualCardProvider, VirtualCardProvider>();
 
             return services;
         }

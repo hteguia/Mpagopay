@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Mpagopay.Api.Tools;
+using Mpagopay.Application.Contrats.Infrastructure;
 using Mpagopay.Application.Features.Cards.Commands.CreateCard;
 using Mpagopay.Application.Features.Cards.Commands.DeleteCard;
 using Mpagopay.Application.Features.Cards.Commands.UpdateCard;
 using Mpagopay.Application.Features.Cards.Queries.GetCardDetail;
 using Mpagopay.Application.Features.Cards.Queries.GetCardsExport;
 using Mpagopay.Application.Features.Cards.Queries.GetCardsList;
+using Mpagopay.Application.Models.VirtualCard;
 
 namespace Mpagopay.Api.Controllers
 {
@@ -16,10 +18,12 @@ namespace Mpagopay.Api.Controllers
     public class CardController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IVirtualCardProvider _virtualCardProvider;
 
-        public CardController(IMediator mediator)
+        public CardController(IMediator mediator, IVirtualCardProvider virtualCardProvider)
         {
             _mediator = mediator;
+            _virtualCardProvider = virtualCardProvider;
         }
 
         //[Authorize]
@@ -38,9 +42,18 @@ namespace Mpagopay.Api.Controllers
             return Ok(await _mediator.Send(getCardDetailQuery));
         }
 
-        [HttpPost(Name = "AddCard")]
+        [HttpPost("AddCard", Name = "AddCard")]
         public async Task<ActionResult<long>> Create([FromBody] CreateCardCommand createCardCommand)
         {
+            CardModel cardModel = new CardModel
+            {
+                Name = createCardCommand.Name
+            };
+            cardModel = await _virtualCardProvider.CreateCard(cardModel);
+
+            createCardCommand.Number = cardModel.Number;
+            createCardCommand.Cvv = cardModel.Cvv;
+            createCardCommand.Expires = cardModel.Expires;
             var id = _mediator.Send(createCardCommand);
             return Ok(id);
         }

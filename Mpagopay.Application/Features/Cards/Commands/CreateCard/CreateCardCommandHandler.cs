@@ -8,6 +8,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Mpagopay.Application.Contrats.Infrastructure;
 using Mpagopay.Application.Contrats.Persistence;
+using Mpagopay.Application.Exceptions;
 using Mpagopay.Application.Models.Mail;
 using Mpagopay.Domain.Entities;
 
@@ -31,7 +32,6 @@ namespace Mpagopay.Application.Features.Cards.Commands.CreateCard
         public async Task<long> Handle(CreateCardCommand request, CancellationToken cancellationToken)
         {
            var @card = _mapper.Map<Card>(request);
-
             var validator = new CreateCardCommandValidator(_cardRepository);
             var validationResut = await validator.ValidateAsync(request);
             if(validationResut.Errors.Count > 0)
@@ -63,5 +63,6 @@ namespace Mpagopay.Application.Features.Cards.Commands.CreateCard
 
             return card.CardId;
         }
+
     }
 }

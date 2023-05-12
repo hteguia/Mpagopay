@@ -20,7 +20,7 @@ builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStat
 
 builder.Services.AddSingleton(new HttpClient
 {
-    BaseAddress = new Uri("https://localhost:7275/")
+    BaseAddress = new Uri("https://192.168.100.5:7275/")
 });
 
 builder.Services.AddLocalization();
@@ -28,7 +28,7 @@ builder.Services.AddLocalization();
 //builder.Services.AddHttpClient<ICardDataService, CardDataService>(client => client.BaseAddress = new Uri("https://localhost:7275/"));
 
 builder.Services.AddTransient<CustomAuthorizationMessageHandler>();
-builder.Services.AddHttpClient<IClient, Client>(client => client.BaseAddress = new Uri("https://localhost:7275/"))
+builder.Services.AddHttpClient<IClient, Client>(client => client.BaseAddress = new Uri("https://192.168.100.5:7275/"))
     .AddHttpMessageHandler<CustomAuthorizationMessageHandler>();
 
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
