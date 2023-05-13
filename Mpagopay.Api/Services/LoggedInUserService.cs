@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 using Mpagopay.Application.Contrats;
 
 namespace Mpagopay.Api.Services

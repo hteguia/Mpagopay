@@ -1,5 +1,8 @@
-﻿using MediatR;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Mpagopay.Api.Tools;
 using Mpagopay.Application.Contrats.Infrastructure;
@@ -84,6 +87,7 @@ namespace Mpagopay.Api.Controllers
         public async Task<ActionResult> ExportCards()
         {
             var fileDto = await _mediator.Send(new GetCardsExportQuery());
+            
 
             return File(fileDto.Data, fileDto.ContentType, fileDto.CardExportFileName);
         }
