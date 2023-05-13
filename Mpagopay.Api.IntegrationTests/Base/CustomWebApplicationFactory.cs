@@ -34,19 +34,17 @@ namespace Mpagopay.Api.IntegrationTests.Base
 
                     context.Database.EnsureCreated();
                     context.Database.EnsureCreated();
+
                     try
                     {
                         Utilities.InitializeDbForTests(context);
-                    }catch(Exception ex)
+                    }
+                    catch(Exception ex)
                     {
                         logger.LogError(ex, $"An error occured seeding the database with test lessage. Error: {ex.Message}");
                     }
                 }
             });
-
-            
-
-            
         }
 
         public HttpClient GetAnonymousClient()
