@@ -32,12 +32,6 @@ namespace Mpagopay.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(MpagopayDbContext).Assembly);
-
-            //modelBuilder.Entity<Card>().HasData(new Card
-            //{
-            //    CardId = 1,
-            //    Name = "KAMDJO TEGUIA HERVE"
-            //});
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
