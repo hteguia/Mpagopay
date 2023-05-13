@@ -60,7 +60,7 @@ namespace Mpagopay.Api
 
             app.UseHttpsRedirection();
 
-            //app.UseRouting();
+           
 
             app.UseCustomExceptionHandler();
 

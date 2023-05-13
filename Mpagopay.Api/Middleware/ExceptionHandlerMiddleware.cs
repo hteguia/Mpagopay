@@ -28,7 +28,7 @@ namespace Mpagopay.Api.Middleware
             }
         }
 
-        private Task ConvertException(HttpContext context, Exception ex)
+        private static Task ConvertException(HttpContext context, Exception ex)
         {
             HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
 
