@@ -9,5 +9,6 @@ namespace Mpagopay.Domain.Entities
     public class Partner
     {
         public string Name { get; set; }
+        public string Code { get; set; }
     }
 }
