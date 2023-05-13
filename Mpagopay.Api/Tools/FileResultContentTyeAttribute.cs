@@ -1,4 +1,6 @@
-﻿namespace Mpagopay.Api.Tools
+﻿using System;
+
+namespace Mpagopay.Api.Tools
 {
     [AttributeUsage(AttributeTargets.Method)]
     public class FileResultContentTyeAttribute : Attribute
