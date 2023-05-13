@@ -67,7 +67,7 @@ namespace Mpagopay.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Update([FromBody] UpdateCardCommand updateCardCommand)
         {
-            var id = await _mediator.Send(updateCardCommand);
+            await _mediator.Send(updateCardCommand);
             return NoContent();
         }
 
