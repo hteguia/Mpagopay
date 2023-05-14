@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mpagopay.Persistence;
 
@@ -11,9 +12,10 @@ using Mpagopay.Persistence;
 namespace Mpagopay.Persistence.Migrations
 {
     [DbContext(typeof(MpagopayDbContext))]
-    partial class MpagopayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230514061445_dd")]
+    partial class dd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,6 +103,40 @@ namespace Mpagopay.Persistence.Migrations
                     b.HasIndex("CardId");
 
                     b.ToTable("CardRecharges");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.Country", b =>
+                {
+                    b.Property<long>("CountryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CountryId"), 1L, 1);
+
+                    b.Property<string>("CodeIso2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CodeIso3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CountryId");
+
+                    b.ToTable("Country");
                 });
 
             modelBuilder.Entity("Mpagopay.Domain.Entities.Pricing", b =>
@@ -200,8 +236,8 @@ namespace Mpagopay.Persistence.Migrations
                     b.Property<decimal>("Balance")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("CodeIso2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long?>("CountryId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("CreateBy")
                         .HasColumnType("nvarchar(max)");
@@ -213,9 +249,6 @@ namespace Mpagopay.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdentityId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastModifiedBy")
@@ -230,10 +263,9 @@ namespace Mpagopay.Persistence.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PinCode")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("UserId");
+
+                    b.HasIndex("CountryId");
 
                     b.ToTable("Users");
                 });
@@ -254,6 +286,15 @@ namespace Mpagopay.Persistence.Migrations
                         .HasForeignKey("PricingId");
 
                     b.Navigation("Pricing");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.Users.User", b =>
+                {
+                    b.HasOne("Mpagopay.Domain.Entities.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
+                    b.Navigation("Country");
                 });
 #pragma warning restore 612, 618
         }
