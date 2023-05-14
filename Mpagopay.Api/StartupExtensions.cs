@@ -12,6 +12,7 @@ using Mpagopay.Api.Services;
 using Mpagopay.Api.Tools;
 using Mpagopay.Application;
 using Mpagopay.Application.Contrats;
+using Mpagopay.Business;
 using Mpagopay.Identity;
 using Mpagopay.Identity.Models;
 using Mpagopay.Identity.Seed;
@@ -31,6 +32,7 @@ namespace Mpagopay.Api
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
             builder.Services.AddIdentityServices(builder.Configuration);
+            builder.Services.AddBusinessServices(builder.Configuration);
 
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddHttpContextAccessor();
@@ -126,8 +128,8 @@ namespace Mpagopay.Api
                     await context.Database.MigrateAsync();
                     await CreateFirstData.SeedAsync(context);
                 }
-
-				var identityContext = scope.ServiceProvider.GetService<MpagopayIdentityDbContext>();
+                
+                var identityContext = scope.ServiceProvider.GetService<MpagopayIdentityDbContext>();
 				if (identityContext != null)
 				{
 					//await identityContext.Database.EnsureDeletedAsync();

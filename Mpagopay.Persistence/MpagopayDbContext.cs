@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Mpagopay.Application.Contrats;
 using Mpagopay.Domain.Common;
 using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.Users;
 
 namespace Mpagopay.Persistence
 {
@@ -28,6 +29,8 @@ namespace Mpagopay.Persistence
         public DbSet<Pricing> Pricings { get; set; }
         public DbSet<PricingDetail> PricingDetails { get; set; }
         public DbSet<CardRecharge> CardRecharges { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Recharge> Recharges { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
