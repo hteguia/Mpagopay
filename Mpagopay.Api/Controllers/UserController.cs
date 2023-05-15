@@ -26,6 +26,9 @@ namespace Mpagopay.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IAuthenticationService _authenticationService;
+
+        private readonly MpagopayIdentityDbContext _mpagopayIdentityDbContext;
+        private readonly MpagopayDbContext _mpagopayDbContext;
         private readonly IOptions<ConnectionStringsSettings> _connectionStringsSettings;
         protected readonly IUserBusiness _userBusinessProcess;
 
