@@ -59,8 +59,9 @@ namespace Mpagopay.Api.Middleware
 
             if(result == string.Empty)
             {
-                result = JsonSerializer.Serialize(new { error = ex.Message });
+                result = JsonSerializer.Serialize(new ExceptionMessage { Message = ex.Message });
             }
+
 
             return context.Response.WriteAsync(result);
         }

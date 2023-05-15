@@ -42,7 +42,7 @@ namespace Mpagopay.Application.UnitTests.Cards.Queries
 
             result.ShouldBeOfType<List<CardListVm>>();
 
-            result.Count.ShouldBe(4);
+            result.Count.ShouldBe(5);
         }
     }
 }

@@ -12,6 +12,6 @@ namespace Mpagopay.Application.Features.Cards.Queries.GetCardsList
         public string Name { get; set; }
         public string Number { get; set; }
         public string Cvv { get; set; }
-        public DateTime Expires { get; set; }
+        public string Expires { get; set; }
     }
 }

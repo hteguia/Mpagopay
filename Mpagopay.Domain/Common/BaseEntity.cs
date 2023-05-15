@@ -12,6 +12,5 @@ namespace Mpagopay.Domain.Common
         public DateTime CreateDate { get; set; }
         public string? LastModifiedBy { get; set; }
         public DateTime LastModifiedDate { get; set; }
-
     }
 }

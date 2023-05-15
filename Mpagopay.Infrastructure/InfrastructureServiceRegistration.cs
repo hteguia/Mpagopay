@@ -10,6 +10,7 @@ using Mpagopay.Application.Contrats.Persistence;
 using Mpagopay.Application.Models.Mail;
 using Mpagopay.Application.Models.Mail.Brevo;
 using Mpagopay.Application.Models.Sms;
+using Mpagopay.Application.Tools;
 using Mpagopay.Infrastructure.FileExport;
 using Mpagopay.Infrastructure.Mail;
 using Mpagopay.Infrastructure.Sms;
@@ -26,9 +27,23 @@ namespace Mpagopay.Infrastructure
             services.Configure<BrevoEmailSettings>(configuration.GetSection("BrevoEmailSettings"));
 
             services.AddTransient<ICsvExporter, CsvExporter>();
-            services.AddTransient<IEmailService, BrevoEmailService>();
             services.AddTransient<ISmsService, SmsService>();
             services.AddTransient<IVirtualCardProvider, VirtualCardProvider>();
+            services.AddTransient<IEmailService, BrevoEmailService>();
+            //services.AddScoped<BrevoEmailService>();
+
+            //services.AddTransient<EmailServiceResolver>(serviceProvider => serviceTypeName =>
+            //{
+            //    switch(serviceTypeName)
+            //    {
+            //        case EmailServiceType.DEFAULT:
+            //            return serviceProvider.GetService<EmailService>();
+            //        case EmailServiceType.BREVO:
+            //            return serviceProvider.GetService<BrevoEmailService>();
+            //        default:
+            //            return null;
+            //    }
+            //});
 
             return services;
         }

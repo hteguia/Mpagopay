@@ -33,6 +33,7 @@ namespace Mpagopay.Identity.Services
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
 
+
             if(user == null)
             {
                 throw new Exception($"User with {request.Email} not found");

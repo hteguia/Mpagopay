@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
-    <ImplicitUsings>disable</ImplicitUsings>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mpagopay.Application\Mpagopay.Application.csproj" />
+    <ProjectReference Include="..\Mpagopay.Business\Mpagopay.Business.csproj" />
     <ProjectReference Include="..\Mpagopay.Identity\Mpagopay.Identity.csproj" />
     <ProjectReference Include="..\Mpagopay.Infrastructure\Mpagopay.Infrastructure.csproj" />
     <ProjectReference Include="..\Mpagopay.Persistence\Mpagopay.Persistence.csproj" />
