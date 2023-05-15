@@ -9,5 +9,6 @@ namespace Mpagopay.Application.Contrats.Persistence
 {
     public interface IUserRepository : IAsyncRepository<User>
     {
+        Task<User> FindByEmail(string email); 
     }
 }

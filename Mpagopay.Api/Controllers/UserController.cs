@@ -26,17 +26,12 @@ namespace Mpagopay.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IAuthenticationService _authenticationService;
-
-        private readonly MpagopayIdentityDbContext _mpagopayIdentityDbContext;
-        private readonly MpagopayDbContext _mpagopayDbContext;
-        private readonly IOptions<ConnectionStringsSettings> _connectionStringsSettings;
         protected readonly IUserBusiness _userBusinessProcess;
 
-        public UserController(IMediator mediator, IAuthenticationService authenticationService, IOptions<ConnectionStringsSettings> connectionStringsSettings, IUserBusiness userBusinessProcess)
+        public UserController(IMediator mediator, IAuthenticationService authenticationService, IUserBusiness userBusinessProcess)
         {
             _mediator = mediator;
             _authenticationService = authenticationService;
-            _connectionStringsSettings = connectionStringsSettings;
             _userBusinessProcess = userBusinessProcess;
         }
 
@@ -51,7 +46,6 @@ namespace Mpagopay.Api.Controllers
         [HttpPost("AddUser", Name = "AddUser")]
         public async Task<ActionResult<long>> AddUser([FromBody] CreateUserCommand createUserCommand)
         {
-            User user = new(_connectionStringsSettings, _authenticationService, _mediator);
             bool result =  await _userBusinessProcess.Create(createUserCommand, "User@tegus05");
             return Ok(result);
         }

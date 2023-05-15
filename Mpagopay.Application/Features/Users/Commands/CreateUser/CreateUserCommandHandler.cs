@@ -37,6 +37,12 @@ namespace Mpagopay.Application.Features.Users.Commands.CreateUser
                 throw new Exceptions.ValidationException(validationResut);
             }
 
+            var existingEmail = await _userRepository.FindByEmail(user.Email);
+            if (existingEmail != null)
+            {
+                throw new Exceptions.ResourceAlreadyExistException(user.Email);
+            }
+
             @user.PinCode = BCrypt.Net.BCrypt.HashPassword(@user.PinCode);
             user = await _userRepository.AddAsync(user);
 

@@ -6,11 +6,82 @@ using System.Threading.Tasks;
 using Moq;
 using Mpagopay.Application.Contrats.Persistence;
 using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.Users;
 
 namespace Mpagopay.Application.UnitTests.Mocks
 {
     public class RepositoryMocks
     {
+        public static Mock<IUserRepository> GetUserRepository()
+        {
+            var userOne = new User
+            {
+                FirstName = "Colt",
+                LastName = "Blankenship",
+                Email = "cotl@gmail.com",
+                PhoneNumber= "679799607",
+                CodeIso2 = "CM",
+                PinCode = "1234"
+            };
+
+            var userTwo = new User
+            {
+                FirstName = "John",
+                LastName = "Doe",
+                Email = "john@gmail.com",
+                PhoneNumber = "679799607",
+                CodeIso2 = "CM",
+                PinCode = "1234"
+            };
+
+            var userThree = new User
+            {
+                FirstName = "Timon",
+                LastName = "Moran",
+                Email = "timon@gmail.com",
+                PhoneNumber = "679799607",
+                CodeIso2 = "CM",
+                PinCode = "1234"
+            };
+
+            var userFour = new User
+            {
+                FirstName = "Steven",
+                LastName = "Clay",
+                Email = "steven@gmail.com",
+                PhoneNumber = "679799607",
+                CodeIso2 = "CM",
+                PinCode = "1234"
+            };
+
+            var userFive = new User
+            {
+                FirstName = "Omar",
+                LastName = "Davis",
+                Email = "omar@gmail.com",
+                PhoneNumber = "679799607",
+                CodeIso2 = "CM",
+                PinCode = "1234"
+            };
+
+            var users = new List<User> { userOne, userTwo, userThree, userFour, userFive };
+
+            var mockUserRepository = new Mock<IUserRepository>();
+
+            mockUserRepository.Setup(repo => repo.ListAllAsync()).ReturnsAsync(users);
+
+            mockUserRepository.Setup(repo => repo.FindByEmail("cotl@gmail.com")).ReturnsAsync(userOne);
+
+            mockUserRepository.Setup(repo => repo.AddAsync(It.IsAny<User>())).ReturnsAsync(
+            (User user) =>
+            {
+                users.Add(user);
+                return user;
+            });
+
+            return mockUserRepository;
+        } 
+
         public static Mock<ICardRepository> GetCardRepository()
         {
             var cardOne = new Card

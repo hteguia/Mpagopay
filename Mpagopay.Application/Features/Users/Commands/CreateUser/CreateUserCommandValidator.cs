@@ -33,12 +33,27 @@ namespace Mpagopay.Application.Features.Users.Commands.CreateUser
             RuleFor(p => p).NotEmpty().WithMessage("{PropertyName} is required")
                 .NotNull().Custom((x, context) =>
                 {
-                    var number = phoneUtil.Parse(x.PhoneNumber, x.CodeIso2);
-
-                    if (!phoneUtil.IsValidNumberForRegion(number, x.CodeIso2))
+                    if(string.IsNullOrWhiteSpace(x.PhoneNumber))
                     {
-                        context.AddFailure($"{x} is an invalid phone number");
+                        context.AddFailure($"{x.PhoneNumber} is required");
                     }
+
+                    if (string.IsNullOrWhiteSpace(x.CodeIso2))
+                    {
+                        context.AddFailure($"{x.CodeIso2} is required");
+                    }
+
+                    if(!string.IsNullOrWhiteSpace(x.PhoneNumber) && !string.IsNullOrWhiteSpace(x.CodeIso2))
+                    {
+                        var number = phoneUtil.Parse(x.PhoneNumber, x.CodeIso2);
+                        if (!phoneUtil.IsValidNumberForRegion(number, x.CodeIso2))
+                        {
+                            context.AddFailure($"{x} is an invalid phone number");
+                        }
+                    }
+                    
+
+                    
                 });
         }
     }
