@@ -71,7 +71,7 @@ namespace Mpagopay.Application.UnitTests.Features.Users.Commands
                 PhoneNumber = "",
                 Email = "johnsmithgmail.com",
                 CodeIso2 = "MU",
-                PinCode = "1234"
+                PinCode = "1234e"
             };
 
             async Task createUser() => await handler.Handle(createUserCommand, CancellationToken.None);
