@@ -50,6 +50,7 @@ namespace Mpagopay.Application.UnitTests.Features.Users.Commands
                 PinCode = "4321"
             };
 
+
             await handler.Handle(updateUserCommand, CancellationToken.None);
 
             _mockUserRepository.Verify(x => x.GetByIdAsync(It.IsAny<long>()), Times.Once);
