@@ -16,61 +16,62 @@ namespace Mpagopay.Application.UnitTests.Mocks
         {
             var userOne = new User
             {
+                UserId = 1,
                 FirstName = "Colt",
                 LastName = "Blankenship",
                 Email = "cotl@gmail.com",
                 PhoneNumber= "679799607",
                 CodeIso2 = "CM",
-                PinCode = "1234"
+                PinCode = "$2a$11$28yaKjJ2C/uHnN7Zb1Dum.JkTNBoyEW5mSnUe5E1qiUZ8gkg9mSdm"
             };
 
             var userTwo = new User
             {
+                UserId = 2,
                 FirstName = "John",
                 LastName = "Doe",
                 Email = "john@gmail.com",
                 PhoneNumber = "679799607",
                 CodeIso2 = "CM",
-                PinCode = "1234"
+                PinCode = "$2a$11$V9JcPG1Yl/1S4naI4FVDEuYZhdSZF8x2LPjQQUIDL1Kq/q.D0psKm"
             };
 
             var userThree = new User
             {
+                UserId = 3,
                 FirstName = "Timon",
                 LastName = "Moran",
                 Email = "timon@gmail.com",
                 PhoneNumber = "679799607",
                 CodeIso2 = "CM",
-                PinCode = "1234"
+                PinCode = "$2a$11$3N5yglAxmm2fM/GZ.0hjVut.SAsVriT5x/FUOqoeg/RhoNtRbawlK"
             };
 
             var userFour = new User
             {
+                UserId = 4,
                 FirstName = "Steven",
                 LastName = "Clay",
                 Email = "steven@gmail.com",
                 PhoneNumber = "679799607",
                 CodeIso2 = "CM",
-                PinCode = "1234"
+                PinCode = "$2a$11$82Ss4EYbZTIsg9j.gUn4GuLJORFF9Jw2u34L3Wopxp0BbZFc11wPi"
             };
 
             var userFive = new User
             {
+                UserId = 5,
                 FirstName = "Omar",
                 LastName = "Davis",
                 Email = "omar@gmail.com",
                 PhoneNumber = "679799607",
                 CodeIso2 = "CM",
-                PinCode = "1234"
+                PinCode = "$2a$11$EYjzrhzyn3VC97ZzQVqhoOCG4qN6lPqpMOkTFp5dWidZwI4gGRq9m"
             };
 
             var users = new List<User> { userOne, userTwo, userThree, userFour, userFive };
 
             var mockUserRepository = new Mock<IUserRepository>();
-
-            mockUserRepository.Setup(repo => repo.ListAllAsync()).ReturnsAsync(users);
-
-            mockUserRepository.Setup(repo => repo.FindByEmail("cotl@gmail.com")).ReturnsAsync(userOne);
 
             mockUserRepository.Setup(repo => repo.AddAsync(It.IsAny<User>())).ReturnsAsync(
             (User user) =>
@@ -78,6 +79,15 @@ namespace Mpagopay.Application.UnitTests.Mocks
                 users.Add(user);
                 return user;
             });
+
+
+            mockUserRepository.Setup(repo=>repo.GetByIdAsync(1)).ReturnsAsync(users.FirstOrDefault(p=>p.UserId == 1));
+
+            mockUserRepository.Setup(repo => repo.ListAllAsync()).ReturnsAsync(users);
+
+            mockUserRepository.Setup(repo => repo.FindByEmail("cotl@gmail.com")).ReturnsAsync(userOne);
+
+            
 
             return mockUserRepository;
         } 

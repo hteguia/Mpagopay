@@ -25,11 +25,6 @@ namespace Mpagopay.Application.UnitTests.Features.Users.Commands
         private Mock<IUserRepository> _mockUserRepository;
         private Mock<ILogger<CreateUserCommandHandler>> _logger;
 
-        public CreateUserTests()
-        {
-            
-        }
-
         [SetUp]
         public void Setup()
         {
