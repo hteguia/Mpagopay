@@ -21,11 +21,12 @@ namespace Mpagopay.Application.UnitTests.Features.Users.Commands
 {
     public class CreateUserTests
     {
-        private readonly IMapper _mapper;
-        private readonly Mock<IUserRepository> _mockUserRepository;
-        private readonly Mock<ILogger<CreateUserCommandHandler>> _logger;
+        private IMapper _mapper;
+        private Mock<IUserRepository> _mockUserRepository;
+        private Mock<ILogger<CreateUserCommandHandler>> _logger;
 
-        public CreateUserTests()
+        [SetUp]
+        public void Setup()
         {
             _mockUserRepository = RepositoryMocks.GetUserRepository();
             _logger = new Mock<ILogger<CreateUserCommandHandler>>();
@@ -103,6 +104,27 @@ namespace Mpagopay.Application.UnitTests.Features.Users.Commands
 
             var allcards = await _mockUserRepository.Object.ListAllAsync();
             allcards.Count.ShouldBe(5);
+        }
+
+        [Test]
+        public async Task CreateUser_INvokeBCrypt_ThenAddedToUsersRepoWithEncryptPinCode()
+        {
+            var handler = new CreateUserCommandHandler(_mapper, _mockUserRepository.Object, _logger.Object);
+            CreateUserCommand createUserCommand = new()
+            {
+                FirstName = "John",
+                LastName = "Smith",
+                PhoneNumber = "679799607",
+                Email = "johnsmith@gmail.com",
+                CodeIso2 = "CM",
+                PinCode = "1234"
+            };
+
+            await handler.Handle(createUserCommand, CancellationToken.None);
+
+            var allcards = await _mockUserRepository.Object.ListAllAsync();
+            var user = allcards.FirstOrDefault(p=>p.Email == "johnsmith@gmail.com");
+            Assert.That(BCrypt.Net.BCrypt.Verify("1234", user.PinCode), Is.True);
         }
     }
 }
