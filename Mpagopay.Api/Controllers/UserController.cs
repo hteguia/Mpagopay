@@ -25,11 +25,13 @@ namespace Mpagopay.Api.Controllers
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IAuthenticationService _authenticationService;
         protected readonly IUserBusiness _userBusinessProcess;
 
-        public UserController(IMediator mediator, IUserBusiness userBusinessProcess)
+        public UserController(IMediator mediator, IAuthenticationService authenticationService, IUserBusiness userBusinessProcess)
         {
             _mediator = mediator;
+            _authenticationService = authenticationService;
             _userBusinessProcess = userBusinessProcess;
         }
 
