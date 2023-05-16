@@ -57,14 +57,14 @@ namespace Mpagopay.Application.UnitTests.Features.Users.Commands
 
             var allcards = await _mockUserRepository.Object.ListAllAsync();
             var user = allcards.FirstOrDefault(p => p.UserId == 1);
-            //Assert.Multiple(() =>
-            //{
-            //    Assert.That(user.FirstName, Is.EqualTo("UpColt"));
-            //    Assert.That(user.LastName, Is.EqualTo("UpBlankenship"));
-            //    Assert.That(BCrypt.Net.BCrypt.Verify("1234", user.PinCode), Is.True);
-            //    Assert.That(user.PhoneNumber, Is.EqualTo("58146949"));
-            //    Assert.That(user.CodeIso2, Is.EqualTo("MU"));
-            //});
+            Assert.Multiple(() =>
+            {
+                Assert.That(user.FirstName, Is.EqualTo("UpColt"));
+                Assert.That(user.LastName, Is.EqualTo("UpBlankenship"));
+                Assert.That(BCrypt.Net.BCrypt.Verify("1234", user.PinCode), Is.True);
+                Assert.That(user.PhoneNumber, Is.EqualTo("58146949"));
+                Assert.That(user.CodeIso2, Is.EqualTo("MU"));
+            });
         }
 
         [Test]
