@@ -18,14 +18,12 @@ namespace Mpagopay.Application.Features.Recharges.Commands.CreateRecharge
     {
         private readonly IMapper _mapper;
         private readonly IRechargeRepository _rechargeRepository;
-        private readonly IEmailService _emailService;
         public ILogger<CreateRechargeCommandHandler> _logger;
 
-        public CreateRechargeCommandHandler(IMapper mapper, IRechargeRepository rechargeRepository, IEmailService emailService, ILogger<CreateRechargeCommandHandler> logger)
+        public CreateRechargeCommandHandler(IMapper mapper, IRechargeRepository rechargeRepository,  ILogger<CreateRechargeCommandHandler> logger)
         {
             _mapper = mapper;
             _rechargeRepository = rechargeRepository;
-            _emailService = emailService;
             _logger = logger;
         }
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Mpagopay.Application.Features.Cards.Commands.CreateCard;
 using Mpagopay.Application.Features.Cards.Commands.DeleteCard;
 using Mpagopay.Application.Features.Cards.Commands.UpdateCard;

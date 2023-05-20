@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Mpagopay.Application.Contrats.Infrastructure;
-using Mpagopay.Application.Contrats.Persistence;
 using Mpagopay.Application.Models.Mail;
-using Mpagopay.Application.Models.Mail.Brevo;
 using Mpagopay.Application.Models.Sms;
 using Mpagopay.Application.Tools;
 using Mpagopay.Infrastructure.FileExport;
@@ -24,26 +17,22 @@ namespace Mpagopay.Infrastructure
         {
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
             services.Configure<SmsSettings>(configuration.GetSection("SmsSettings"));
-            services.Configure<BrevoEmailSettings>(configuration.GetSection("BrevoEmailSettings"));
 
             services.AddTransient<ICsvExporter, CsvExporter>();
             services.AddTransient<ISmsService, SmsService>();
             services.AddTransient<IVirtualCardProvider, VirtualCardProvider>();
-            services.AddTransient<IEmailService, BrevoEmailService>();
-            //services.AddScoped<BrevoEmailService>();
+            services.AddTransient<EmailService>();
+            services.AddTransient<EmailConfirmRegistrationService>();
 
-            //services.AddTransient<EmailServiceResolver>(serviceProvider => serviceTypeName =>
-            //{
-            //    switch(serviceTypeName)
-            //    {
-            //        case EmailServiceType.DEFAULT:
-            //            return serviceProvider.GetService<EmailService>();
-            //        case EmailServiceType.BREVO:
-            //            return serviceProvider.GetService<BrevoEmailService>();
-            //        default:
-            //            return null;
-            //    }
-            //});
+            services.AddTransient<EmailServiceResolver>(serviceProvider => token =>
+            {
+                return token switch
+                {
+                    EmailType.DEFAULT => serviceProvider.GetService<EmailService>(),
+                    EmailType.CONFIRM_REGISTRATION => serviceProvider.GetService<EmailConfirmRegistrationService>(),
+                    _ => throw new InvalidOperationException()
+                };
+            });
 
             return services;
         }

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Mpagopay.Application.Contrats.Infrastructure;
+﻿using Mpagopay.Application.Contrats.Infrastructure;
 
 namespace Mpagopay.Application.Tools
 {
-    public delegate IEmailService EmailServiceResolver(EmailServiceType serviceType);
-    public enum EmailServiceType
+    public delegate IEmailService EmailServiceResolver(EmailType emailType);
+
+    public enum EmailType
     {
-        DEFAULT,
-        BREVO
+        DEFAULT = 0,
+        CONFIRM_REGISTRATION = 1,
     }
 }

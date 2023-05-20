@@ -1,21 +1,25 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Mpagopay.Application.Contrats.Infrastructure;
 using Mpagopay.Application.Models.Mail;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using Mpagopay.Application.Tools;
+using Newtonsoft.Json;
 
 namespace Mpagopay.Infrastructure.Mail
 {
-    public class EmailService : IEmailService
+    public class EmailConfirmRegistrationService : IEmailService
     {
         private EmailSettings _emailSettings { get; }
         private ILogger<EmailService> _logger;
 
-        public EmailService(IOptions<EmailSettings> mailSettings, ILogger<EmailService> logger)
+        public EmailConfirmRegistrationService(IOptions<EmailSettings> mailSettings, ILogger<EmailService> logger)
         {
-            _emailSettings= mailSettings.Value;
+            _emailSettings = mailSettings.Value;
             _logger = logger;
         }
 
@@ -24,9 +28,9 @@ namespace Mpagopay.Infrastructure.Mail
             var emailModel = new
             {
                 From = new { Email = _emailSettings.SenderEmail, Name = _emailSettings.SenderName },
-                To = new[] {new { Email = email.To } },
-                email.Subject,
-                Text = email.Body,
+                To = new[] { new { Email = email.To } },
+                template_uuid = _emailSettings.RegisterUuid,
+                template_variables = new { confirm_link = "https://teguia.me" }
             };
 
             var client = new HttpClient();
@@ -46,7 +50,6 @@ namespace Mpagopay.Infrastructure.Mail
             _logger.LogInformation("Email sending failed");
 
             return false;
-            
         }
     }
 }

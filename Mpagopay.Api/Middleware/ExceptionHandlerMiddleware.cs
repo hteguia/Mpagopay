@@ -2,6 +2,7 @@
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Mpagopay.Application.Exceptions;
 
@@ -20,6 +21,7 @@ namespace Mpagopay.Api.Middleware
         {
             try
             {
+                var tokne = await context.GetTokenAsync("access_token");
                 await _next(context);
             }
             catch(Exception ex)

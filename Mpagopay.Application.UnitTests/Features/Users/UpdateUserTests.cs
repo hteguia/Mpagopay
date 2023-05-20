@@ -13,9 +13,10 @@ using Mpagopay.Application.Features.Users.Commands.UpdateUser;
 using Mpagopay.Application.Profiles;
 using Mpagopay.Application.UnitTests.Mocks;
 using Mpagopay.Domain.Entities.Users;
+using NuGet.Frameworks;
 using Shouldly;
 
-namespace Mpagopay.Application.UnitTests.Features.Users.Commands
+namespace Mpagopay.Application.UnitTests.Features.Users
 {
     public class UpdateUserTests
     {
@@ -75,17 +76,25 @@ namespace Mpagopay.Application.UnitTests.Features.Users.Commands
             UpdateUserCommand updateUserCommand = new()
             {
                 Id = 1,
-                FirstName = "UpColt",
-                LastName = "UpBlankenship",
+                FirstName = "",
+                LastName = "",
                 PhoneNumber = "58146949",
-                CodeIso2 = "MU",
+                CodeIso2 = "CM",
                 PinCode = "4321"
             };
 
             async Task updateUser() => await handler.Handle(updateUserCommand, CancellationToken.None);
 
             await Should.ThrowAsync<ValidationException>(() => updateUser());
-
+            var allcards = await _mockUserRepository.Object.ListAllAsync();
+            var user = allcards.FirstOrDefault(p => p.UserId == 1);
+            Assert.Multiple(() =>
+            {
+                Assert.That(user.FirstName, Is.Not.EqualTo(updateUserCommand.FirstName));
+                Assert.That(user.LastName, Is.Not.EqualTo(updateUserCommand.LastName));
+                Assert.That(user.PhoneNumber, Is.Not.EqualTo(updateUserCommand.PhoneNumber));
+                Assert.That(user.CodeIso2, Is.Not.EqualTo(updateUserCommand.CodeIso2));
+            });
         }
     }
 }

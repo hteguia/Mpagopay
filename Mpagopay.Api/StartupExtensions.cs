@@ -61,8 +61,8 @@ namespace Mpagopay.Api
             }
 
             app.UseHttpsRedirection();
-
-           
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseCustomExceptionHandler();
 
