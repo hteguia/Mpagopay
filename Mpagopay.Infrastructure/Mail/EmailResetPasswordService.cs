@@ -12,12 +12,12 @@ using Newtonsoft.Json;
 
 namespace Mpagopay.Infrastructure.Mail
 {
-    public class EmailConfirmRegistrationService : IEmailService
+    public class EmailResetPasswordService : IEmailService
     {
         private EmailSettings _emailSettings { get; }
         private ILogger<EmailService> _logger;
 
-        public EmailConfirmRegistrationService(IOptions<EmailSettings> mailSettings, ILogger<EmailService> logger)
+        public EmailResetPasswordService(IOptions<EmailSettings> mailSettings, ILogger<EmailService> logger)
         {
             _emailSettings = mailSettings.Value;
             _logger = logger;
@@ -30,7 +30,7 @@ namespace Mpagopay.Infrastructure.Mail
                 From = new { Email = _emailSettings.SenderEmail, Name = _emailSettings.SenderName },
                 To = new[] { new { Email = email.To } },
                 template_uuid = _emailSettings.RegisterUuid,
-                template_variables = new { confirm_link = email.Body }
+                template_variables = new { user_email = email.To, pass_reset_link = email.Body }
             };
 
             var client = new HttpClient();

@@ -11,5 +11,10 @@ namespace Mpagopay.Application.Contrats.Identity
     {
         Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request);
         Task<RegistrationResponse> RegisterAsync(RegistrationRequest request);
+        Task<bool> ChangePassword(ChangePasswordRequest request);
+        Task<bool> ResetPassword(ResetPasswordRequest request);
+        Task<(string userId, string token)> ResetPassword(string email);
+        Task<string> GenerateEmailConfirmationTokenAsync(string userId);
+        Task<object> ConfirmEmailAsync(string userId, string token);
     }
 }

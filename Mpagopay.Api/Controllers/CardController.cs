@@ -70,7 +70,7 @@ namespace Mpagopay.Api.Controllers
                 Subject = "Nouvelle Card Virtuelle"
             };
 
-            _emailService(EmailType.CONFIRM_REGISTRATION).SendEmail(email, EmailType.CONFIRM_REGISTRATION);
+            await _emailService(EmailType.CONFIRM_REGISTRATION).SendEmail(email);
 
             return Ok(id);
         }

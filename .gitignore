@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Mpagopay.Api/.logs
+/Mpagopay.Api/Controllers/AccountController.cs

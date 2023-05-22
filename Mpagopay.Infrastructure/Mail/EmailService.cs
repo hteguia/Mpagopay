@@ -19,7 +19,7 @@ namespace Mpagopay.Infrastructure.Mail
             _logger = logger;
         }
 
-        public async Task<bool> SendEmail(Email email, EmailType emailType)
+        public async Task<bool> SendEmail(Email email)
         {
             var emailModel = new
             {

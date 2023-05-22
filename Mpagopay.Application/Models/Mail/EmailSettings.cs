@@ -7,5 +7,6 @@
         public string Token { get; set; }
         public string Url { get; set; }
         public string RegisterUuid { get; set; }
+        public string ResetPasswordUuid { get; set; }
     }
 }

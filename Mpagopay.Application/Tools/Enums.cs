@@ -8,5 +8,6 @@ namespace Mpagopay.Application.Tools
     {
         DEFAULT = 0,
         CONFIRM_REGISTRATION = 1,
+        RESET_PASSWORD = 2,
     }
 }

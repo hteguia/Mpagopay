@@ -23,8 +23,7 @@ namespace Mpagopay.Application.Models.Authentication
         [MinLength(6)]
         public string UserName { get; set; }
 
-        [Required]
-        [MinLength(6)]
         public string Password { get; set; }
+        public bool EmailConfirmed { get; set; }
     }
 }

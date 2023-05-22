@@ -10,6 +10,6 @@ namespace Mpagopay.Application.Contrats.Infrastructure
 {
     public interface IEmailService
     {
-        Task<bool> SendEmail(Email email, EmailType emailType);
+        Task<bool> SendEmail(Email email);
     }
 }

@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Mpagopay.Identity.Models;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using Mpagopay.Application.Models.Authentication;
 using Mpagopay.Application.Contrats.Identity;
+using IdentityModel;
+using MediatR;
+using Mpagopay.Application.Contrats;
+using Mpagopay.Application.Models.Mail;
 
 namespace Mpagopay.Identity.Services
 {
@@ -21,13 +19,29 @@ namespace Mpagopay.Identity.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly JwtSettings _jwtSettings;
+        private readonly ILoggedInUserService? _loggedInUserService;
 
-        public AuthenticationService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings)
+        public AuthenticationService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings, ILoggedInUserService loggedInUserService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _jwtSettings = jwtSettings.Value;
+            _loggedInUserService = loggedInUserService;
         }
+
+        public async Task<(string userId, string token)> ResetPassword(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                throw new Exception($"User with {email} not found");
+            }
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            return (user.Id, token);
+        }
+
+        
 
         public async Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request)
         {
@@ -43,7 +57,7 @@ namespace Mpagopay.Identity.Services
 
             if(!result.Succeeded)
             {
-                throw new Exception($"credentials for '{request.Email} aren't valied'.");
+                throw new Exception($"credentials for '{request.Email} aren't valid'.");
             }
 
             JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
@@ -107,14 +121,15 @@ namespace Mpagopay.Identity.Services
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 UserName = request.UserName,
-                EmailConfirmed = true
+                EmailConfirmed = request.EmailConfirmed
             };
 
             var existingEmail = await _userManager.FindByEmailAsync(request.Email);
 
             if(existingEmail == null)
             {
-                var result = await _userManager.CreateAsync(user, request.Password);
+                var password = string.IsNullOrWhiteSpace(request.Password) ? GeneratePassword() : request.Password;
+                var result = await _userManager.CreateAsync(user, password);
 
                 if (result.Succeeded)
                 {
@@ -129,6 +144,90 @@ namespace Mpagopay.Identity.Services
             {
                 throw new Exception($"Email {request.Email} already exists.");
             }
+        }
+
+        private  string GeneratePassword(
+            int requiredLength = 8,
+            int requiredUniqueChars = 4,
+            bool requireDigit = true,
+            bool requireLowercase = true,
+            bool requireNonAlphanumeric = true,
+            bool requireUppercase = true)
+        {
+            string[] randomChars = new[] {
+            "ABCDEFGHJKLMNOPQRSTUVWXYZ",    // uppercase 
+            "abcdefghijkmnopqrstuvwxyz",    // lowercase
+            "0123456789",                   // digits
+            "!@$?_-"                        // non-alphanumeric
+            };
+            CryptoRandom rand = new CryptoRandom();
+            List<char> chars = new List<char>();
+
+            if (requireUppercase)
+                chars.Insert(rand.Next(0, chars.Count),
+                    randomChars[0][rand.Next(0, randomChars[0].Length)]);
+
+            if (requireLowercase)
+                chars.Insert(rand.Next(0, chars.Count),
+                    randomChars[1][rand.Next(0, randomChars[1].Length)]);
+
+            if (requireDigit)
+                chars.Insert(rand.Next(0, chars.Count),
+                    randomChars[2][rand.Next(0, randomChars[2].Length)]);
+
+            if (requireNonAlphanumeric)
+                chars.Insert(rand.Next(0, chars.Count),
+                    randomChars[3][rand.Next(0, randomChars[3].Length)]);
+
+            for (int i = chars.Count; i < requiredLength
+                || chars.Distinct().Count() < requiredUniqueChars; i++)
+            {
+                string rcs = randomChars[rand.Next(0, randomChars.Length)];
+                chars.Insert(rand.Next(0, chars.Count),
+                    rcs[rand.Next(0, rcs.Length)]);
+            }
+
+            return new string(chars.ToArray());
+        }
+
+        public async Task<bool> ChangePassword(ChangePasswordRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(_loggedInUserService.UserId);
+            if (user == null)
+            {
+                throw new Exception($"User not found");
+            }
+
+            await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
+            return true;
+        }
+
+        public async Task<bool> ResetPassword(ResetPasswordRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(request.UserId);
+            if (user == null)
+            {
+                throw new Exception($"User not found");
+            }
+
+            var result = await _userManager.ResetPasswordAsync(user, request.Token, request.Password);
+            return true;
+        }
+
+        public async Task<string> GenerateEmailConfirmationTokenAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                throw new Exception($"User not found");
+            }
+
+            return await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        }
+
+        public Task<object> ConfirmEmailAsync(string userId, string token)
+        {
+            throw new NotImplementedException();
         }
     }
 }
