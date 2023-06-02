@@ -1,12 +1,12 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Moq;
 using Mpagopay.Application.Contrats.Persistence;
-using Mpagopay.Domain.Entities;
 using Mpagopay.Domain.Entities.Users;
+using Mpagopay.Domain.Entities.VirtualCard;
 
 namespace Mpagopay.Application.UnitTests.Mocks
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mpagopay.Domain.Entities
+namespace Mpagopay.Domain.Entities.Tarification
 {
     public class PricingDetail
     {

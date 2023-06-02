@@ -6,8 +6,8 @@ using Mpagopay.Application.Features.Cards.Queries.GetCardDetail;
 using Mpagopay.Application.Features.Cards.Queries.GetCardsList;
 using Mpagopay.Application.Features.Users.Commands.CreateUser;
 using Mpagopay.Application.Features.Users.Queries.GetUserList;
-using Mpagopay.Domain.Entities;
 using Mpagopay.Domain.Entities.Users;
+using Mpagopay.Domain.Entities.VirtualCard;
 using PhoneNumbers;
 
 namespace Mpagopay.Application.Profiles

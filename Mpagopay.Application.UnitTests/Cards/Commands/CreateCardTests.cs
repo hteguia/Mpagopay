@@ -7,7 +7,7 @@ using Mpagopay.Application.Exceptions;
 using Mpagopay.Application.Features.Cards.Commands.CreateCard;
 using Mpagopay.Application.Profiles;
 using Mpagopay.Application.UnitTests.Mocks;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.VirtualCard;
 using Shouldly;
 
 namespace Mpagopay.Application.UnitTests.Cards.Commands

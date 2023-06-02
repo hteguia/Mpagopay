@@ -10,7 +10,7 @@ using Mpagopay.Application.Contrats.Infrastructure;
 using Mpagopay.Application.Contrats.Persistence;
 using Mpagopay.Application.Features.Cards.Commands.CreateCard;
 using Mpagopay.Application.Models.Mail;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.Tarification;
 
 namespace Mpagopay.Application.Features.Pricings.Commands.CreatePricing
 {

@@ -23,7 +23,6 @@ namespace Mpagopay.Api.Controllers
         public async Task<ActionResult<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request)
         {
 
-
             return Ok(await _authenticationService.AuthenticateAsync(request));
         }
 

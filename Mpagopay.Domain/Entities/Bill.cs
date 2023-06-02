@@ -7,9 +7,8 @@ using Mpagopay.Domain.Common;
 
 namespace Mpagopay.Domain.Entities
 {
-    public class Pricing : BaseEntity
+    public class Bill : BaseEntity
     {
-        public long PricingId { get; set; }
-        public string Name { get; set; } = string.Empty;
+
     }
 }

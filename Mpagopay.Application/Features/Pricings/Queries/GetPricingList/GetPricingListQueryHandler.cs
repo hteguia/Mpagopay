@@ -7,7 +7,7 @@ using AutoMapper;
 using MediatR;
 using Mpagopay.Application.Contrats.Persistence;
 using Mpagopay.Application.Features.Cards.Queries.GetCardsList;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.Tarification;
 
 namespace Mpagopay.Application.Features.Pricings.Queries.GetPricingList
 {

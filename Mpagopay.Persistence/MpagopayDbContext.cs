@@ -8,7 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Mpagopay.Application.Contrats;
 using Mpagopay.Domain.Common;
 using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.Tarification;
 using Mpagopay.Domain.Entities.Users;
+using Mpagopay.Domain.Entities.VirtualCard;
 
 namespace Mpagopay.Persistence
 {

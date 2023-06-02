@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Mpagopay.Application.Contrats.Persistence;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.Tarification;
 
 namespace Mpagopay.Persistence.Repositories
 {

@@ -7,7 +7,7 @@ using AutoMapper;
 using MediatR;
 using Mpagopay.Application.Contrats.Persistence;
 using Mpagopay.Application.Features.Cards.Commands.UpdateCard;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.VirtualCard;
 
 namespace Mpagopay.Application.Features.Cards.Commands.DeleteCard
 {

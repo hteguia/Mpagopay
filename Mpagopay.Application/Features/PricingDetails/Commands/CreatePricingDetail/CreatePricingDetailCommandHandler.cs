@@ -7,7 +7,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Mpagopay.Application.Contrats.Persistence;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.Tarification;
 
 namespace Mpagopay.Application.Features.PricingDetails.Commands.CreatePricingDetail
 {

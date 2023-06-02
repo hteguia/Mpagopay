@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Mpagopay.Domain.Common;
 
-namespace Mpagopay.Domain.Entities
+namespace Mpagopay.Domain.Entities.VirtualCard
 {
     public class CardRecharge : BaseEntity
     {
