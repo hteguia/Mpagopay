@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Castle.Core.Logging;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Mpagopay.Identity;
+using Mpagopay.Identity.Models;
 using Mpagopay.Persistence;
 
 namespace Mpagopay.Api.IntegrationTests.Base
@@ -31,13 +28,18 @@ namespace Mpagopay.Api.IntegrationTests.Base
                     var scopedServices = scope.ServiceProvider;
                     var context = scopedServices.GetRequiredService<MpagopayDbContext>();
                     var logger = scopedServices.GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
+                    
 
+                    context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
-                    context.Database.EnsureCreated();
+
+                    var contextIdentity = scopedServices.GetRequiredService<MpagopayIdentityDbContext>();
+                    var userManager = scope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
 
                     try
                     {
                         Utilities.InitializeDbForTests(context);
+                        Utilities.InitializeDbIdentityForTests(userManager).ConfigureAwait(true);
                     }
                     catch(Exception ex)
                     {

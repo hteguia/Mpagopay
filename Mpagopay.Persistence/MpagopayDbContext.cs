@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Mpagopay.Application.Contrats;
 using Mpagopay.Domain.Common;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.BankAccounts;
 using Mpagopay.Domain.Entities.Tarification;
 using Mpagopay.Domain.Entities.Users;
 using Mpagopay.Domain.Entities.VirtualCard;
@@ -32,7 +32,8 @@ namespace Mpagopay.Persistence
         public DbSet<PricingDetail> PricingDetails { get; set; }
         public DbSet<CardRecharge> CardRecharges { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Recharge> Recharges { get; set; }
+        public DbSet<CreditBankAccount> CreditBankAccounts { get; set; }
+        public DbSet<BankAccount> BankAccounts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

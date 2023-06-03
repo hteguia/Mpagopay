@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mpagopay.Identity;
 
@@ -11,9 +12,10 @@ using Mpagopay.Identity;
 namespace Mpagopay.Identity.Migrations
 {
     [DbContext(typeof(MpagopayIdentityDbContext))]
-    partial class MpagopayIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230603065445_olllllllllllllllllllll")]
+    partial class olllllllllllllllllllll
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -108,42 +108,59 @@ namespace Mpagopay.Identity.Services
 
         public async Task<RegistrationResponse> RegisterAsync(RegistrationRequest request)
         {
-            var existingUser = await _userManager.FindByNameAsync(request.UserName);
+            //var existingUser = await _userManager.FindByNameAsync(request.UserName);
 
-            if (existingUser != null)
+            //if (existingUser != null)
+            //{
+            //    throw new Exception($"Username '{request.UserName}' already exists.");
+            //}
+
+            var validator = new RegistrationRequestValidator(_userManager);
+            var validationResut = await validator.ValidateAsync(request);
+            if (validationResut.Errors.Count > 0)
             {
-                throw new Exception($"Username '{request.UserName}' already exists.");
+                throw new Application.Exceptions.ValidationException(validationResut);
             }
 
             var user = new ApplicationUser
             {
                 Email = request.Email,
-                FirstName = request.FirstName,
-                LastName = request.LastName,
                 UserName = request.UserName,
                 EmailConfirmed = request.EmailConfirmed
             };
 
-            var existingEmail = await _userManager.FindByEmailAsync(request.Email);
+            var password = string.IsNullOrWhiteSpace(request.Password) ? GeneratePassword() : request.Password;
+            var result = await _userManager.CreateAsync(user, password);
 
-            if(existingEmail == null)
+            if (result.Succeeded)
             {
-                var password = string.IsNullOrWhiteSpace(request.Password) ? GeneratePassword() : request.Password;
-                var result = await _userManager.CreateAsync(user, password);
-
-                if (result.Succeeded)
-                {
-                    return new RegistrationResponse() { UserId = user.Id };
-                }
-                else
-                {
-                    throw new Exception($"{result.Errors}");
-                }
+                return new RegistrationResponse() { UserId = user.Id };
             }
             else
             {
-                throw new Exception($"Email {request.Email} already exists.");
+                throw new Exception($"{result.Errors}");
             }
+
+            //var existingEmail = await _userManager.FindByEmailAsync(request.Email);
+
+            //if(existingEmail == null)
+            //{
+            //    var password = string.IsNullOrWhiteSpace(request.Password) ? GeneratePassword() : request.Password;
+            //    var result = await _userManager.CreateAsync(user, password);
+
+            //    if (result.Succeeded)
+            //    {
+            //        return new RegistrationResponse() { UserId = user.Id };
+            //    }
+            //    else
+            //    {
+            //        throw new Exception($"{result.Errors}");
+            //    }
+            //}
+            //else
+            //{
+            //    throw new Exception($"Email {request.Email} already exists.");
+            //}
         }
 
         private  string GeneratePassword(

@@ -31,7 +31,7 @@ namespace Mpagopay.Application.Features.Cards.Commands.CreateCard
 
         public async Task<long> Handle(CreateCardCommand request, CancellationToken cancellationToken)
         {
-           var @card = _mapper.Map<Card>(request);
+            var @card = _mapper.Map<Card>(request);
             var validator = new CreateCardCommandValidator(_cardRepository);
             var validationResut = await validator.ValidateAsync(request);
             if(validationResut.Errors.Count > 0)

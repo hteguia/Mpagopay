@@ -35,7 +35,7 @@ namespace Mpagopay.Application.UnitTests.Cards.Commands
         [Test]
         public async Task Handle_ValidateCard_AddedToCardsRepo()
         {
-            var handler = new CreateCardCommandHandler(_mapper, _mockCardRepository.Object, _mockEmailService.Object, _logger.Object);
+            var handler = new CreateCardCommandHandler(_mapper, _mockCardRepository.Object, _logger.Object);
 
             Card card = new()
             {
@@ -54,7 +54,7 @@ namespace Mpagopay.Application.UnitTests.Cards.Commands
         [Test]
         public async Task Handle_AddedWithExistingNumber()
         {
-            var handler = new CreateCardCommandHandler(_mapper, _mockCardRepository.Object, _mockEmailService.Object, _logger.Object);
+            var handler = new CreateCardCommandHandler(_mapper, _mockCardRepository.Object,  _logger.Object);
 
             Card card = new()
             {

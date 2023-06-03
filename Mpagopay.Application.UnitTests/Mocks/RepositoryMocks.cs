@@ -22,7 +22,7 @@ namespace Mpagopay.Application.UnitTests.Mocks
                 Email = "cotl@gmail.com",
                 PhoneNumber= "679799607",
                 CodeIso2 = "CM",
-                PinCode = "$2a$11$28yaKjJ2C/uHnN7Zb1Dum.JkTNBoyEW5mSnUe5E1qiUZ8gkg9mSdm"
+                //PinCode = "$2a$11$28yaKjJ2C/uHnN7Zb1Dum.JkTNBoyEW5mSnUe5E1qiUZ8gkg9mSdm"
             };
 
             var userTwo = new User
@@ -33,7 +33,7 @@ namespace Mpagopay.Application.UnitTests.Mocks
                 Email = "john@gmail.com",
                 PhoneNumber = "679799607",
                 CodeIso2 = "CM",
-                PinCode = "$2a$11$V9JcPG1Yl/1S4naI4FVDEuYZhdSZF8x2LPjQQUIDL1Kq/q.D0psKm"
+                //PinCode = "$2a$11$V9JcPG1Yl/1S4naI4FVDEuYZhdSZF8x2LPjQQUIDL1Kq/q.D0psKm"
             };
 
             var userThree = new User
@@ -44,7 +44,7 @@ namespace Mpagopay.Application.UnitTests.Mocks
                 Email = "timon@gmail.com",
                 PhoneNumber = "679799607",
                 CodeIso2 = "CM",
-                PinCode = "$2a$11$3N5yglAxmm2fM/GZ.0hjVut.SAsVriT5x/FUOqoeg/RhoNtRbawlK"
+                //PinCode = "$2a$11$3N5yglAxmm2fM/GZ.0hjVut.SAsVriT5x/FUOqoeg/RhoNtRbawlK"
             };
 
             var userFour = new User
@@ -55,7 +55,7 @@ namespace Mpagopay.Application.UnitTests.Mocks
                 Email = "steven@gmail.com",
                 PhoneNumber = "679799607",
                 CodeIso2 = "CM",
-                PinCode = "$2a$11$82Ss4EYbZTIsg9j.gUn4GuLJORFF9Jw2u34L3Wopxp0BbZFc11wPi"
+                //PinCode = "$2a$11$82Ss4EYbZTIsg9j.gUn4GuLJORFF9Jw2u34L3Wopxp0BbZFc11wPi"
             };
 
             var userFive = new User
@@ -66,7 +66,7 @@ namespace Mpagopay.Application.UnitTests.Mocks
                 Email = "omar@gmail.com",
                 PhoneNumber = "679799607",
                 CodeIso2 = "CM",
-                PinCode = "$2a$11$EYjzrhzyn3VC97ZzQVqhoOCG4qN6lPqpMOkTFp5dWidZwI4gGRq9m"
+                //PinCode = "$2a$11$EYjzrhzyn3VC97ZzQVqhoOCG4qN6lPqpMOkTFp5dWidZwI4gGRq9m"
             };
 
             var users = new List<User> { userOne, userTwo, userThree, userFour, userFive };
