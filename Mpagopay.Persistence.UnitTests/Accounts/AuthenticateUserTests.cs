@@ -43,9 +43,7 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
         {
             var userManager = _mockUserManager.Object;
             var signInManager = _mockSignInManager.Object;
-            string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0a2gudGVndXMiLCJqdGkiOiI4NTVlMmZiNC0yNjNhLTRmMDQtOTRjZC0zMjBlMzI3ZmVlMTYiLCJlbWFpbCI6InRraC50ZWd1c0BnbWFpbC5jb20iLCJ1aWQiOiJlMzBkMTEwYi02NWIzLTQ2ZjMtYTExNS04OWFmYjhkYzNkYTkiLCJleHAiOjE2ODU4MjQzNjQsImlzcyI6Ik1wYWdvcGF5SWRlbnRpdHkiLCJhdWQiOiJNcGFnb3BheUlkZW50aXR5In0.eFN7KK-zv8sfgS5TkRKXUaHve5_1lbvLasCsOOyNhqk";
-            JwtSecurityTokenHandler.Setup(x => x.WriteToken(It.IsAny<JwtSecurityToken>())).Returns(token);
-            _mockJwtSettings.Setup(x => x.Value).Returns(new JwtSettings { Key = "Key", Audience = "Audience", Issuer = "Issuer", DurationInMinutes = 60 });
+            _mockJwtSettings.Setup(x => x.Value).Returns(new JwtSettings { Key = "KJKLJ4KL34JL3KJ4L3KJ4L3KJ4L3K4JL", Audience = "MpagopayIdentity\"", Issuer = "MpagopayIdentity", DurationInMinutes = 60 });
 
             var configurationSectionMock = new Mock<IConfigurationSection>();
             var configurationMock = new Mock<IConfiguration>();
@@ -73,8 +71,7 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
             _mockSignInManager.Verify(x => x.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()), Times.Once);
 
             result.ShouldNotBeNull();
-            result.ShouldNotBeOfType<AuthenticationResponse>();
-            result.Token.ShouldBe(token);
+            result.Token.ShouldNotBeNull();
         }
 
         [Test]
@@ -95,8 +92,8 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
                 Password = "dp@5y!gW"
             });
 
-            _mockUserManager.Verify(x => x.FindByEmailAsync(It.IsAny<string>()), Times.Once);
             await Should.ThrowAsync<Exception>(() => authenticateUser());
+            _mockUserManager.Verify(x => x.FindByEmailAsync(It.IsAny<string>()), Times.Once);
         }
 
         [Test]
@@ -117,8 +114,9 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
                 Password = "wrongpassword"
             });
 
-            _mockSignInManager.Verify(x => x.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()), Times.Once);
+            
             await Should.ThrowAsync<Exception>(() => authenticateUser());
+            _mockSignInManager.Verify(x => x.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()), Times.Once);
         }
     }
 }

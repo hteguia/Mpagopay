@@ -34,7 +34,7 @@ namespace Mpagopay.Persistence.UnitTests.Mocks
             mgr.Setup(x => x.UpdateAsync(It.IsAny<ApplicationUser>())).ReturnsAsync(IdentityResult.Success);
             mgr.Setup(x => x.GetClaimsAsync(It.IsAny<ApplicationUser>())).Returns(Task.FromResult(new List<Claim>() as IList<Claim>));
             mgr.Setup(x => x.GetRolesAsync(It.IsAny<ApplicationUser>())).Returns(Task.FromResult(new List<string>() as IList<string>));
-            mgr.Setup(x => x.FindByEmailAsync("john@gmail.com")).ReturnsAsync(new ApplicationUser { Email = "john@gmail.com" });
+            mgr.Setup(x => x.FindByEmailAsync("john@gmail.com")).ReturnsAsync(new ApplicationUser { Email = "john@gmail.com", UserName = "john" });
             mgr.Setup(x => x.FindByEmailAsync("noexist@gmail.com")).ReturnsAsync(null as ApplicationUser);
             mgr.Setup(x => x.Users).Returns(_users.AsQueryable());
             

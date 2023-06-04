@@ -58,7 +58,6 @@ namespace Mpagopay.Identity.Services
             }
 
             JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
-
             AuthenticationResponse authenticationResponse = new AuthenticationResponse()
             {
                 Id = user.Id,

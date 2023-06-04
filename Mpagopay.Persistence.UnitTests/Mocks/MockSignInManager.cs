@@ -19,8 +19,8 @@ namespace Mpagopay.Persistence.UnitTests.Mocks
             var hd = new Mock<IUserClaimsPrincipalFactory<ApplicationUser>>();
             var mgr = new Mock<SignInManager<ApplicationUser>>(MockUserManager.GetUserManager().Object, h.Object, hd.Object, null, null, null, null);
 
-            mgr.Setup(x => x.PasswordSignInAsync("john@gmail.com", "dp@5y!gW", It.IsAny<bool>(), It.IsAny<bool>())).ReturnsAsync(SignInResult.Success);
-            mgr.Setup(x => x.PasswordSignInAsync("john@gmail.com", "wrongpassword", It.IsAny<bool>(), It.IsAny<bool>())).ReturnsAsync(SignInResult.Failed);
+            mgr.Setup(x => x.PasswordSignInAsync("john", "dp@5y!gW", It.IsAny<bool>(), It.IsAny<bool>())).ReturnsAsync(SignInResult.Success);
+            mgr.Setup(x => x.PasswordSignInAsync("john", "wrongpassword", It.IsAny<bool>(), It.IsAny<bool>())).ReturnsAsync(SignInResult.Failed);
 
             return mgr;
         }
