@@ -124,7 +124,7 @@ namespace Mpagopay.Api
                 var context = scope.ServiceProvider.GetService<MpagopayDbContext>();
                 if(context != null)
                 {
-                    await context.Database.EnsureDeletedAsync();
+                    //await context.Database.EnsureDeletedAsync();
                     await context.Database.MigrateAsync();
                     //await CreateFirstData.SeedAsync(context);
                 }
@@ -132,7 +132,7 @@ namespace Mpagopay.Api
                 var identityContext = scope.ServiceProvider.GetService<MpagopayIdentityDbContext>();
 				if (identityContext != null)
 				{
-					await identityContext.Database.EnsureDeletedAsync();
+					//await identityContext.Database.EnsureDeletedAsync();
 					await identityContext.Database.MigrateAsync();
 
                     //var userManager = scope.ServiceProvider.GetService<UserManager<ApplicationUser>>();

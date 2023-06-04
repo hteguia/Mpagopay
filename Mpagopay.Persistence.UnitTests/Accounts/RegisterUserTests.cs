@@ -41,8 +41,6 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
 
             await authenticationService.RegisterAsync(new RegistrationRequest
             {
-                FirstName = "Luc",
-                LastName = "KAMTO",
                 Email = "luckamto@bv.com",
                 UserName = "luckamto",
                 EmailConfirmed = false
@@ -50,7 +48,28 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
 
             var users = userManager.Users.ToList();
             _mockUserManager.Verify(x => x.FindByEmailAsync(It.IsAny<string>()), Times.Once);
+            _mockUserManager.Verify(x => x.FindByNameAsync(It.IsAny<string>()), Times.Once);
             users.Count.ShouldBe(6);
+        }
+
+        [Test]
+        public async Task RegisterUser_WithInValidInput_ThenReturnValidationException()
+        {
+            var userManager = _mockUserManager.Object;
+            var signInManager = _mockSignInManager.Object;
+            IAuthenticationService authenticationService = new AuthenticationService(userManager,
+                                                                                     signInManager,
+                                                                                     _mockJwtSettings.Object,
+                                                                                     _loggedInUserServiceMock.Object);
+
+            async Task registerUser() => await authenticationService.RegisterAsync(new RegistrationRequest
+            {
+                Email = "johngmail.com",
+                UserName = "",
+                EmailConfirmed = false
+            });
+
+            await Should.ThrowAsync<ValidationException>(() => registerUser());
         }
 
         [Test]
@@ -65,8 +84,6 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
 
             async Task registerUser() => await authenticationService.RegisterAsync(new RegistrationRequest
             {
-                FirstName = "Luc",
-                LastName = "KAMTO",
                 Email = "john@gmail.com",
                 UserName = "john",
                 EmailConfirmed = false

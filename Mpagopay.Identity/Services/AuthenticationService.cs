@@ -41,14 +41,11 @@ namespace Mpagopay.Identity.Services
             return (user.Id, token);
         }
 
-        
-
         public async Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
 
-
-            if(user == null)
+            if (user == null)
             {
                 throw new Exception($"User with {request.Email} not found");
             }
@@ -108,13 +105,6 @@ namespace Mpagopay.Identity.Services
 
         public async Task<RegistrationResponse> RegisterAsync(RegistrationRequest request)
         {
-            //var existingUser = await _userManager.FindByNameAsync(request.UserName);
-
-            //if (existingUser != null)
-            //{
-            //    throw new Exception($"Username '{request.UserName}' already exists.");
-            //}
-
             var validator = new RegistrationRequestValidator(_userManager);
             var validationResut = await validator.ValidateAsync(request);
             if (validationResut.Errors.Count > 0)
@@ -140,30 +130,49 @@ namespace Mpagopay.Identity.Services
             {
                 throw new Exception($"{result.Errors}");
             }
-
-            //var existingEmail = await _userManager.FindByEmailAsync(request.Email);
-
-            //if(existingEmail == null)
-            //{
-            //    var password = string.IsNullOrWhiteSpace(request.Password) ? GeneratePassword() : request.Password;
-            //    var result = await _userManager.CreateAsync(user, password);
-
-            //    if (result.Succeeded)
-            //    {
-            //        return new RegistrationResponse() { UserId = user.Id };
-            //    }
-            //    else
-            //    {
-            //        throw new Exception($"{result.Errors}");
-            //    }
-            //}
-            //else
-            //{
-            //    throw new Exception($"Email {request.Email} already exists.");
-            //}
         }
 
-        private  string GeneratePassword(
+        public async Task<bool> ChangePassword(ChangePasswordRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(_loggedInUserService.UserId);
+            if (user == null)
+            {
+                throw new Exception($"User not found");
+            }
+
+            await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
+            return true;
+        }
+
+        public async Task<bool> ResetPassword(ResetPasswordRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(request.UserId);
+            if (user == null)
+            {
+                throw new Exception($"User not found");
+            }
+
+            var result = await _userManager.ResetPasswordAsync(user, request.Token, request.Password);
+            return true;
+        }
+
+        public async Task<string> GenerateEmailConfirmationTokenAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                throw new Exception($"User not found");
+            }
+
+            return await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        }
+
+        public Task<object> ConfirmEmailAsync(string userId, string token)
+        {
+            throw new NotImplementedException();
+        }
+
+        private string GeneratePassword(
             int requiredLength = 8,
             int requiredUniqueChars = 4,
             bool requireDigit = true,
@@ -205,46 +214,6 @@ namespace Mpagopay.Identity.Services
             }
 
             return new string(chars.ToArray());
-        }
-
-        public async Task<bool> ChangePassword(ChangePasswordRequest request)
-        {
-            var user = await _userManager.FindByIdAsync(_loggedInUserService.UserId);
-            if (user == null)
-            {
-                throw new Exception($"User not found");
-            }
-
-            await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
-            return true;
-        }
-
-        public async Task<bool> ResetPassword(ResetPasswordRequest request)
-        {
-            var user = await _userManager.FindByIdAsync(request.UserId);
-            if (user == null)
-            {
-                throw new Exception($"User not found");
-            }
-
-            var result = await _userManager.ResetPasswordAsync(user, request.Token, request.Password);
-            return true;
-        }
-
-        public async Task<string> GenerateEmailConfirmationTokenAsync(string userId)
-        {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                throw new Exception($"User not found");
-            }
-
-            return await _userManager.GenerateEmailConfirmationTokenAsync(user);
-        }
-
-        public Task<object> ConfirmEmailAsync(string userId, string token)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -32,8 +32,6 @@ namespace Mpagopay.Business.Users
             {
                 RegistrationRequest registrationRequest = new()
                 {
-                    FirstName = createUserCommand.FirstName,
-                    LastName = createUserCommand.LastName,
                     Email = createUserCommand.Email,
                     UserName = createUserCommand.Email,
                     Password = password
