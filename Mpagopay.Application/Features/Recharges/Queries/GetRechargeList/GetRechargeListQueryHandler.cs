@@ -7,15 +7,15 @@ using AutoMapper;
 using MediatR;
 using Mpagopay.Application.Contrats.Persistence;
 using Mpagopay.Application.Features.Pricings.Queries.GetPricingList;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.BankAccounts;
 
 namespace Mpagopay.Application.Features.Recharges.Queries.GetRechargeList
 {
     public class GetRechargeListQueryHandler : IRequestHandler<GetRechargeListQuery, List<RechargeListVm>>
     {
         private readonly IMapper _mapper;
-        private readonly IAsyncRepository<Recharge> _rechargeRepository;
-        public GetRechargeListQueryHandler(IMapper mapper, IAsyncRepository<Recharge> rechargeRepository)
+        private readonly IAsyncRepository<CreditBankAccount> _rechargeRepository;
+        public GetRechargeListQueryHandler(IMapper mapper, IAsyncRepository<CreditBankAccount> rechargeRepository)
         {
             _mapper = mapper;
             _rechargeRepository = rechargeRepository;

@@ -61,8 +61,8 @@ namespace Mpagopay.Api
             }
 
             app.UseHttpsRedirection();
-
-           
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseCustomExceptionHandler();
 
@@ -126,7 +126,7 @@ namespace Mpagopay.Api
                 {
                     //await context.Database.EnsureDeletedAsync();
                     await context.Database.MigrateAsync();
-                    await CreateFirstData.SeedAsync(context);
+                    //await CreateFirstData.SeedAsync(context);
                 }
                 
                 var identityContext = scope.ServiceProvider.GetService<MpagopayIdentityDbContext>();
@@ -135,11 +135,11 @@ namespace Mpagopay.Api
 					//await identityContext.Database.EnsureDeletedAsync();
 					await identityContext.Database.MigrateAsync();
 
-                    var userManager = scope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
-                    if(userManager != null)
-                    {
-                        await CreateFisrtUser.SeedAsync(userManager);
-                    }
+                    //var userManager = scope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
+                    //if(userManager != null)
+                    //{
+                    //    await CreateFisrtUser.SeedAsync(userManager);
+                    //}
                 }
 			}
             catch(Exception ex)

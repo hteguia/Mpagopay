@@ -12,15 +12,15 @@ using Mpagopay.Application.Profiles;
 using Mpagopay.Application.UnitTests.Mocks;
 using Shouldly;
 
-namespace Mpagopay.Application.UnitTests.Features.Users.Queries
+namespace Mpagopay.Application.UnitTests.Features.Users
 {
     [TestFixture]
-    public class GetUserListQueryHandlerTests
+    public class GetUsersTests
     {
         private readonly IMapper _mapper;
         private readonly Mock<IUserRepository> _mockUserRepository;
 
-        public GetUserListQueryHandlerTests()
+        public GetUsersTests()
         {
             _mockUserRepository = RepositoryMocks.GetUserRepository();
             var configurationProvider = new MapperConfiguration(cfg =>

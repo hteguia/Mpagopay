@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Moq;
 using Mpagopay.Application.Contrats;
 using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.VirtualCard;
 using Shouldly;
 
 namespace Mpagopay.Persistence.IntegrationTests

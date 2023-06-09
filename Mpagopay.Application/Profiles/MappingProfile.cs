@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Mpagopay.Application.Features.Cards.Commands.CreateCard;
 using Mpagopay.Application.Features.Cards.Commands.DeleteCard;
 using Mpagopay.Application.Features.Cards.Commands.UpdateCard;
@@ -11,8 +6,8 @@ using Mpagopay.Application.Features.Cards.Queries.GetCardDetail;
 using Mpagopay.Application.Features.Cards.Queries.GetCardsList;
 using Mpagopay.Application.Features.Users.Commands.CreateUser;
 using Mpagopay.Application.Features.Users.Queries.GetUserList;
-using Mpagopay.Domain.Entities;
 using Mpagopay.Domain.Entities.Users;
+using Mpagopay.Domain.Entities.VirtualCard;
 using PhoneNumbers;
 
 namespace Mpagopay.Application.Profiles

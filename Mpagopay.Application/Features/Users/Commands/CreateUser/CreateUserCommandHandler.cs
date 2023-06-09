@@ -43,7 +43,7 @@ namespace Mpagopay.Application.Features.Users.Commands.CreateUser
                 throw new Exceptions.ResourceAlreadyExistException(user.Email);
             }
 
-            @user.PinCode = BCrypt.Net.BCrypt.HashPassword(@user.PinCode);
+            //@user.PinCode = BCrypt.Net.BCrypt.HashPassword(@user.PinCode);
             user = await _userRepository.AddAsync(user);
 
             return user.UserId;

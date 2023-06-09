@@ -2,20 +2,26 @@
 using Mpagopay.Api.IntegrationTests.Base;
 using System.Text.Json;
 using Mpagopay.Application.Features.Cards.Queries.GetCardsList;
-using Xunit;
+using Shouldly;
+using AutoMapper;
+using Microsoft.Extensions.Logging;
+using Moq;
+using Mpagopay.Application.Features.Users.Commands.CreateUser;
 
 namespace Mpagopay.Api.IntegrationTests.Controllers
 {
-    
-    public class CardControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
+    [TestFixture]
+    public class CardControllerTests
     {
-        private readonly CustomWebApplicationFactory<Program> _factory;
-        public CardControllerTests(CustomWebApplicationFactory<Program> factory)
+        private CustomWebApplicationFactory<Program> _factory;      
+
+        [SetUp]
+        public void Setup()
         {
-            _factory = factory;
+            _factory = new CustomWebApplicationFactory<Program>();
         }
 
-        [Fact]
+        [Test]
         public async Task ReturnsSuccessResult()
         {
             var client = _factory.GetAnonymousClient();
@@ -28,8 +34,8 @@ namespace Mpagopay.Api.IntegrationTests.Controllers
 
             var result = JsonSerializer.Deserialize<List<CardListVm>>(responseString);
 
-            Assert.IsType<List<CardListVm>>(result);
-            Assert.NotEmpty(result);
+            result.ShouldBeOfType<List<CardListVm>>();
+            result.Count.ShouldBe(1);
         }
     }
 }

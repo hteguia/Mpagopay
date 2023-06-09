@@ -8,7 +8,7 @@ using MediatR;
 using Mpagopay.Application.Contrats.Persistence;
 using Mpagopay.Application.Exceptions;
 using Mpagopay.Application.Features.Cards.Commands.UpdateCard;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.Tarification;
 
 namespace Mpagopay.Application.Features.Pricings.Commands.UpdatePricing
 {

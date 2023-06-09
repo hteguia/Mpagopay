@@ -12,7 +12,7 @@ namespace Mpagopay.Infrastructure.VirtualCard
     {
         public Task<CardModel> CreateCard(CardModel cardModel)
         {
-            Random _random = new Random();
+            Random _random = new();
             int value = _random.Next(1000);
 
             cardModel.Number = GenerateCardNumber();
