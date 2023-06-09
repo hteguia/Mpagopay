@@ -7,7 +7,7 @@ using AutoMapper;
 using MediatR;
 using Mpagopay.Application.Contrats.Infrastructure;
 using Mpagopay.Application.Contrats.Persistence;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.VirtualCard;
 
 namespace Mpagopay.Application.Features.Cards.Queries.GetCardsExport
 {

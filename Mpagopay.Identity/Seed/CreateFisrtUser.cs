@@ -14,8 +14,6 @@ namespace Mpagopay.Identity.Seed
 		{
 			var application = new ApplicationUser
 			{
-				FirstName = "John",
-				LastName = "Smith",
 				UserName = "johnsmith",
 				Email = "test@test.com",
 				EmailConfirmed = true,

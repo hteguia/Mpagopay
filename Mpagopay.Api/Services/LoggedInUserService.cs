@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 using Mpagopay.Application.Contrats;
 
 namespace Mpagopay.Api.Services
@@ -15,7 +16,7 @@ namespace Mpagopay.Api.Services
         {
             get
             {
-                return  _contextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                return _contextAccessor.HttpContext?.User.Claims.FirstOrDefault(x => x.Type.Equals("uid", StringComparison.OrdinalIgnoreCase))?.Value;
             }
         }
     }

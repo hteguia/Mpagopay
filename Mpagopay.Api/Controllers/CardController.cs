@@ -1,5 +1,6 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Mpagopay.Api.Tools;
 using Mpagopay.Application.Contrats.Infrastructure;
@@ -9,7 +10,10 @@ using Mpagopay.Application.Features.Cards.Commands.UpdateCard;
 using Mpagopay.Application.Features.Cards.Queries.GetCardDetail;
 using Mpagopay.Application.Features.Cards.Queries.GetCardsExport;
 using Mpagopay.Application.Features.Cards.Queries.GetCardsList;
+using Mpagopay.Application.Models.Mail;
 using Mpagopay.Application.Models.VirtualCard;
+using Mpagopay.Application.Tools;
+using Mpagopay.Domain.Entities;
 
 namespace Mpagopay.Api.Controllers
 {
@@ -19,11 +23,13 @@ namespace Mpagopay.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IVirtualCardProvider _virtualCardProvider;
+        private readonly EmailServiceResolver _emailService;
 
-        public CardController(IMediator mediator, IVirtualCardProvider virtualCardProvider)
+        public CardController(IMediator mediator, EmailServiceResolver emailServiceResolver, IVirtualCardProvider virtualCardProvider)
         {
             _mediator = mediator;
             _virtualCardProvider = virtualCardProvider;
+            _emailService = emailServiceResolver;
         }
 
         //[Authorize]
@@ -54,7 +60,18 @@ namespace Mpagopay.Api.Controllers
             createCardCommand.Number = cardModel.Number;
             createCardCommand.Cvv = cardModel.Cvv;
             createCardCommand.Expires = cardModel.Expires;
-            var id = _mediator.Send(createCardCommand);
+            var id = await _mediator.Send(createCardCommand);
+
+            //Sending email notification to admin address
+            var email = new Email
+            {
+                To = "tkh.tegus@gmail.com",
+                Body = "Votre carte a été créee avec success",
+                Subject = "Nouvelle Card Virtuelle"
+            };
+
+            await _emailService(EmailType.CONFIRM_REGISTRATION).SendEmail(email);
+
             return Ok(id);
         }
 
@@ -64,7 +81,7 @@ namespace Mpagopay.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Update([FromBody] UpdateCardCommand updateCardCommand)
         {
-            var id = await _mediator.Send(updateCardCommand);
+            await _mediator.Send(updateCardCommand);
             return NoContent();
         }
 
@@ -84,6 +101,7 @@ namespace Mpagopay.Api.Controllers
         public async Task<ActionResult> ExportCards()
         {
             var fileDto = await _mediator.Send(new GetCardsExportQuery());
+            
 
             return File(fileDto.Data, fileDto.ContentType, fileDto.CardExportFileName);
         }

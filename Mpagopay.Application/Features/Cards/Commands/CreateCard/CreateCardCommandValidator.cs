@@ -19,7 +19,6 @@ namespace Mpagopay.Application.Features.Cards.Commands.CreateCard
                 .NotNull()
                 .MaximumLength(100).WithMessage("{PropertyName} must not exceed 100 characters.");
 
-
             RuleFor(p => p.Number).NotEmpty().WithMessage("{PropertyName} is required")
                 .NotNull()
                 .Length(19).WithMessage("{PropertyName} must contain 19 characters.")

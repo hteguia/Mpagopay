@@ -1,5 +1,9 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Mpagopay.Application.Exceptions;
 
 namespace Mpagopay.Api.Middleware
@@ -17,6 +21,7 @@ namespace Mpagopay.Api.Middleware
         {
             try
             {
+                var tokne = await context.GetTokenAsync("access_token");
                 await _next(context);
             }
             catch(Exception ex)
@@ -25,7 +30,7 @@ namespace Mpagopay.Api.Middleware
             }
         }
 
-        private Task ConvertException(HttpContext context, Exception ex)
+        private static Task ConvertException(HttpContext context, Exception ex)
         {
             HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
 
@@ -33,7 +38,7 @@ namespace Mpagopay.Api.Middleware
 
             var result = string.Empty;
 
-            switch (ex.InnerException)
+            switch (ex)
             {
                 case ValidationException validationException:
                     httpStatusCode = HttpStatusCode.BadRequest;
@@ -56,8 +61,9 @@ namespace Mpagopay.Api.Middleware
 
             if(result == string.Empty)
             {
-                result = JsonSerializer.Serialize(new { error = ex.Message });
+                result = JsonSerializer.Serialize(new ExceptionMessage { Message = ex.Message });
             }
+
 
             return context.Response.WriteAsync(result);
         }

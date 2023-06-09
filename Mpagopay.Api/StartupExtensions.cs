@@ -1,11 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Mpagopay.Api.Middleware;
 using Mpagopay.Api.Services;
 using Mpagopay.Api.Tools;
 using Mpagopay.Application;
 using Mpagopay.Application.Contrats;
+using Mpagopay.Business;
 using Mpagopay.Identity;
 using Mpagopay.Identity.Models;
 using Mpagopay.Identity.Seed;
@@ -25,6 +32,7 @@ namespace Mpagopay.Api
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
             builder.Services.AddIdentityServices(builder.Configuration);
+            builder.Services.AddBusinessServices(builder.Configuration);
 
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddHttpContextAccessor();
@@ -53,8 +61,8 @@ namespace Mpagopay.Api
             }
 
             app.UseHttpsRedirection();
-
-            //app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseCustomExceptionHandler();
 
@@ -118,20 +126,20 @@ namespace Mpagopay.Api
                 {
                     //await context.Database.EnsureDeletedAsync();
                     await context.Database.MigrateAsync();
-                    await CreateFirstData.SeedAsync(context);
+                    //await CreateFirstData.SeedAsync(context);
                 }
-
-				var identityContext = scope.ServiceProvider.GetService<MpagopayIdentityDbContext>();
+                
+                var identityContext = scope.ServiceProvider.GetService<MpagopayIdentityDbContext>();
 				if (identityContext != null)
 				{
 					//await identityContext.Database.EnsureDeletedAsync();
 					await identityContext.Database.MigrateAsync();
 
-                    var userManager = scope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
-                    if(userManager != null)
-                    {
-                        await CreateFisrtUser.SeedAsync(userManager);
-                    }
+                    //var userManager = scope.ServiceProvider.GetService<UserManager<ApplicationUser>>();
+                    //if(userManager != null)
+                    //{
+                    //    await CreateFisrtUser.SeedAsync(userManager);
+                    //}
                 }
 			}
             catch(Exception ex)

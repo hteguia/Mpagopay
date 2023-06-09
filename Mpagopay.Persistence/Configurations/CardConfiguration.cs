@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Mpagopay.Domain.Entities;
+using Mpagopay.Domain.Entities.VirtualCard;
 
 namespace Mpagopay.Persistence.Configurations
 {

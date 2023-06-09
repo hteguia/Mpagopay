@@ -22,7 +22,177 @@ namespace Mpagopay.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Mpagopay.Domain.Entities.Card", b =>
+            modelBuilder.Entity("Mpagopay.Domain.Entities.BankAccounts.BankAccount", b =>
+                {
+                    b.Property<long>("BankAccountId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("BankAccountId"), 1L, 1);
+
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("CreateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PinCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("BankAccountId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BankAccounts");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.BankAccounts.CreditBankAccount", b =>
+                {
+                    b.Property<long>("CreditBankAccountId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CreditBankAccountId"), 1L, 1);
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<long>("BanAccountId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("BankAccountId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("Fee")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("PServiceProvider")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReferenceId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("CreditBankAccountId");
+
+                    b.HasIndex("BankAccountId");
+
+                    b.ToTable("CreditBankAccounts");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.Tarification.Pricing", b =>
+                {
+                    b.Property<long>("PricingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("PricingId"), 1L, 1);
+
+                    b.Property<string>("CreateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PricingId");
+
+                    b.ToTable("Pricings");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.Tarification.PricingDetail", b =>
+                {
+                    b.Property<long>("PricingDetailId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("PricingDetailId"), 1L, 1);
+
+                    b.Property<decimal>("Fee")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("LowerAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<long?>("PricingId")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("UpperAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("PricingDetailId");
+
+                    b.HasIndex("PricingId");
+
+                    b.ToTable("PricingDetails");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.Users.User", b =>
+                {
+                    b.Property<long>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("UserId"), 1L, 1);
+
+                    b.Property<string>("CodeIso2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdentityId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.VirtualCard.Card", b =>
                 {
                     b.Property<long>("CardId")
                         .ValueGeneratedOnAdd()
@@ -38,11 +208,13 @@ namespace Mpagopay.Persistence.Migrations
 
                     b.Property<string>("Cvv")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
 
                     b.Property<string>("Expires")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -57,11 +229,86 @@ namespace Mpagopay.Persistence.Migrations
 
                     b.Property<string>("Number")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(19)
+                        .HasColumnType("nvarchar(19)");
 
                     b.HasKey("CardId");
 
                     b.ToTable("Cards");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.VirtualCard.CardRecharge", b =>
+                {
+                    b.Property<long>("CardRechargeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CardRechargeId"), 1L, 1);
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<long?>("CardId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Fee")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CardRechargeId");
+
+                    b.HasIndex("CardId");
+
+                    b.ToTable("CardRecharges");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.BankAccounts.BankAccount", b =>
+                {
+                    b.HasOne("Mpagopay.Domain.Entities.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.BankAccounts.CreditBankAccount", b =>
+                {
+                    b.HasOne("Mpagopay.Domain.Entities.BankAccounts.BankAccount", "BankAccount")
+                        .WithMany()
+                        .HasForeignKey("BankAccountId");
+
+                    b.Navigation("BankAccount");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.Tarification.PricingDetail", b =>
+                {
+                    b.HasOne("Mpagopay.Domain.Entities.Tarification.Pricing", "Pricing")
+                        .WithMany()
+                        .HasForeignKey("PricingId");
+
+                    b.Navigation("Pricing");
+                });
+
+            modelBuilder.Entity("Mpagopay.Domain.Entities.VirtualCard.CardRecharge", b =>
+                {
+                    b.HasOne("Mpagopay.Domain.Entities.VirtualCard.Card", "Card")
+                        .WithMany()
+                        .HasForeignKey("CardId");
+
+                    b.Navigation("Card");
                 });
 #pragma warning restore 612, 618
         }
