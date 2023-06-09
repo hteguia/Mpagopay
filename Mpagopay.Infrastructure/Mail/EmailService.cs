@@ -47,6 +47,8 @@ namespace Mpagopay.Infrastructure.Mail
                 return true;
             }
 
+
+
             _logger.LogInformation("Email sending failed");
 
             return false;
