@@ -21,7 +21,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=hteguia
-            -Dsonar.projectKey=Mpagopay
+            -Dsonar.projectKey=hteguia_Mpagopay
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
