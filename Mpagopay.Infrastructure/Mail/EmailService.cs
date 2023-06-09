@@ -1,4 +1,4 @@
-﻿$using System.Text;
+﻿using System.Text;
 using Microsoft.Extensions.Options;
 using Mpagopay.Application.Contrats.Infrastructure;
 using Mpagopay.Application.Models.Mail;
