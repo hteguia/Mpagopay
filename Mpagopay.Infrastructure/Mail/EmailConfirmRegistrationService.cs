@@ -25,31 +25,40 @@ namespace Mpagopay.Infrastructure.Mail
 
         public async Task<bool> SendEmail(Email email)
         {
-            var emailModel = new
+            try
             {
-                From = new { Email = _emailSettings.SenderEmail, Name = _emailSettings.SenderName },
-                To = new[] { new { Email = email.To } },
-                template_uuid = _emailSettings.RegisterUuid,
-                template_variables = new { confirm_link = email.Body }
-            };
+                var emailModel = new
+                {
+                    From = new { Email = _emailSettings.SenderEmail, Name = _emailSettings.SenderName },
+                    To = new[] { new { Email = email.To } },
+                    template_uuid = _emailSettings.RegisterUuid,
+                    template_variables = new { confirm_link = email.Body }
+                };
 
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {_emailSettings.Token}");
-            string requestContent = JsonConvert.SerializeObject(emailModel);
-            var stringContent = new StringContent(requestContent, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(_emailSettings.Url, stringContent);
-            var responseContent = await response.Content.ReadAsStringAsync();
-            var dataResponse = JsonConvert.DeserializeObject<object>(responseContent);
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {_emailSettings.Token}");
+                string requestContent = JsonConvert.SerializeObject(emailModel);
+                var stringContent = new StringContent(requestContent, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(_emailSettings.Url, stringContent);
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var dataResponse = JsonConvert.DeserializeObject<object>(responseContent);
 
-            if (response.IsSuccessStatusCode)
-            {
-                _logger.LogInformation("Email sent successfully");
-                return true;
+                if (response.IsSuccessStatusCode)
+                {
+                    _logger.LogInformation("Email sent successfully");
+                    return true;
+                }
+
+                _logger.LogInformation("Email sending failed");
+
+                return false;
             }
+            catch(Exception ex)
+            {
+                return false;
 
-            _logger.LogInformation("Email sending failed");
-
-            return false;
+            }
+            
         }
     }
 }

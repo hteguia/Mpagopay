@@ -22,7 +22,6 @@ namespace Mpagopay.Api.Controllers
         [HttpPost("authenticate")]
         public async Task<ActionResult<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request)
         {
-
             return Ok(await _authenticationService.AuthenticateAsync(request));
         }
 
@@ -36,7 +35,7 @@ namespace Mpagopay.Api.Controllers
             var emailModel = new Email
             {
                 To = request.Email,
-                Body = url,
+                Body = url
             };
 
             await _emailService(EmailType.CONFIRM_REGISTRATION).SendEmail(emailModel);

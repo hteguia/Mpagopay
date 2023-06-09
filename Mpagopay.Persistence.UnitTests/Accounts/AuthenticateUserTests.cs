@@ -25,8 +25,7 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
         private Mock<SignInManager<ApplicationUser>> _mockSignInManager;
         private Mock<IOptions<JwtSettings>> _mockJwtSettings;
         private Mock<ILoggedInUserService> _loggedInUserServiceMock;
-        private Mock<JwtSecurityTokenHandler> JwtSecurityTokenHandler;
-
+        private IAuthenticationService authenticationService;
 
         [SetUp]
         public void Setup()
@@ -35,14 +34,16 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
             _mockSignInManager = MockSignInManager.GetSignInManager();
             _loggedInUserServiceMock = new Mock<ILoggedInUserService>();
             _mockJwtSettings = new Mock<IOptions<JwtSettings>>();
-            JwtSecurityTokenHandler = new Mock<JwtSecurityTokenHandler>();
+
+            authenticationService = new AuthenticationService(_mockUserManager.Object,
+                                                              _mockSignInManager.Object,
+                                                              _mockJwtSettings.Object,
+                                                              _loggedInUserServiceMock.Object);
         }
 
         [Test]
         public async Task AuthenticateUser_WithValidInput_ThenReturnToken()
         {
-            var userManager = _mockUserManager.Object;
-            var signInManager = _mockSignInManager.Object;
             _mockJwtSettings.Setup(x => x.Value).Returns(new JwtSettings { Key = "KJKLJ4KL34JL3KJ4L3KJ4L3KJ4L3K4JL", Audience = "MpagopayIdentity\"", Issuer = "MpagopayIdentity", DurationInMinutes = 60 });
 
             var configurationSectionMock = new Mock<IConfigurationSection>();
@@ -56,10 +57,6 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
                .Setup(x => x.GetSection("JwtSettings:Key"))
                .Returns(configurationSectionMock.Object);
 
-            IAuthenticationService authenticationService = new AuthenticationService(userManager,
-                                                                                     signInManager,
-                                                                                     _mockJwtSettings.Object,
-                                                                                     _loggedInUserServiceMock.Object);
 
            var result = await authenticationService.AuthenticateAsync(new AuthenticationRequest
             {
@@ -77,15 +74,6 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
         [Test]
         public async Task AuthenticateUser_WithNoExistsEmail_ThenReturnException()
         {
-            var userManager = _mockUserManager.Object;
-            var signInManager = _mockSignInManager.Object;
-
-            IAuthenticationService authenticationService = new AuthenticationService(userManager,
-                                                                                     signInManager,
-                                                                                     _mockJwtSettings.Object,
-                                                                                     _loggedInUserServiceMock.Object);
-            
-
             async Task authenticateUser() => await authenticationService.AuthenticateAsync(new AuthenticationRequest
             {
                 Email = "noexist@gmail.com",
@@ -99,22 +87,12 @@ namespace Mpagopay.Persistence.UnitTests.Accounts
         [Test]
         public async Task AuthenticateUser_WithWrongPassword_ThenReturnException()
         {
-            var userManager = _mockUserManager.Object;
-            var signInManager = _mockSignInManager.Object;
-
-            IAuthenticationService authenticationService = new AuthenticationService(userManager,
-                                                                                     signInManager,
-                                                                                     _mockJwtSettings.Object,
-                                                                                     _loggedInUserServiceMock.Object);
-
-
             async Task authenticateUser() => await authenticationService.AuthenticateAsync(new AuthenticationRequest
             {
                 Email = "john@gmail.com",
                 Password = "wrongpassword"
             });
-
-            
+           
             await Should.ThrowAsync<Exception>(() => authenticateUser());
             _mockSignInManager.Verify(x => x.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()), Times.Once);
         }
